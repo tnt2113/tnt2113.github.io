@@ -1,2 +1,3 @@
-    name: T. N. Templin
-    markdown: kramdown
+name: T. N. Templin
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title
