@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Mathedemo</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+<h2>Lecture 1: The real number system, $\mathbb{R}$</h2>
+
+<b> Theorem (Existance of Reals): There exists a totally ordered field satisfying the completeness axiom, which contains the rationals $\mathbb{Q}$ as a subfield. </b> 
+
+<p> What is:
+<ul>
+<li>A field</li>
+<li>Totally ordered</li>
+<li>The completeness axiom</li>
+</ul>
+</p>
+
+<p> FIELD: The real number line with additional and multiplication is a field. For every $a,b \in \mathbb{R}$, $a+b$ and $ab$ are real. </p> 
+
+<p> Addition and multiplication satisfy the following properties:
+
+($\forall$ means for all. $\in$ means are elements of. $\exists$ means there exists. s.t. means such that.)
+<ul>
+<li>Addition is commutative: $ a + b = b + a$, $ \forall a,b \in \mathbb{R}$</li>
+
+<li>Addition is associative: $a + b = b + a$, $ \forall a,b \in \mathbb{R}$</li>
+
+<li>Addition has a neutral (identity) element. There exists something (let's call it zero.) such that $0 + a = a + 0 = a, \forall a \in \mathbb{R} $</li>
+
+<li>Addition is symmetric: $\forall a \in \mathbb{R}$, $\exists$ some $-a$ s.t. $a + (-a) = (-a) + a = 0$</li>
+</ul>
+</p>
+Just considering the real number line and addition, we can say that $(\mathbb{R}, +)$ is a group.
+
+Now throw in multiplication.
+<ul>
+<li>Multiplication is associative: $a \cdot b = b \cdot a$ $\forall a,b \in \mathbb{R}$</li>
+
+<li>Multiplication is distributive: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ $\forall a,b,c \in \mathbb{R}$ </li>
+
+<li>Multiplciation has a neutral element: There exists something (let's call it one.) such that $1 \cdot a = a \cdot 1 = a, \forall a \in \mathbb{R} \setminus \{0\}$</li>
+
+<li>Multiplcation is symmetric: $\forall a \in \mathbb{R} \setminus \{0\}$, $\exists$ $a^{-1}$ s.t. $a \cdot a^{-1} = a^{-1} \cdot a = 1$ </li>
+
+<li>Multiplication is commutative: $ a \cdot b = b \cdot a$ $\forall a,b \in \mathbb{R}$</li>
+</ul>
+<p> It's just a matter of notation to extend the above statements to subtraction and division. Subtraction: $a-b = a + (-b)$, $ \forall a,b \in \mathbb{R}$. Division: $\frac{a}{b} = a \cdot b^{-1}$, $\forall a \in \mathbb{R}$, $\forall b \in \mathbb{R} \setminus \{0\}$ </p> 
+
+<p> Let's use fancy terms to describe sets of numbers and operators that we already know!</p> 
+<ul>
+<li>$(\mathbb{Q}, +, \cdot)$ is a field. It satisfies all of the things listed above. </li> 
+<li>$(\mathbb{Z}, +, \cdot)$ is a ring. It satisfies all of the things listed above except the symmetric property. $2^{-1} = \frac{1}{2} \notin \mathbb{Z}$. </li> 
+<li>$(\mathbb{N}, +, \cdot)$ satisfies the associative properties, the commutative properties, the multiplicative neutral element, and the distributive property. But doesn't have enough structure to be a field or a ring. </li> 
+</ul>
+<p> There are consequences of the field properties:
+<ol>
+<li> 0 is unique. </li>
+<li> $ \forall a \in \mathbb{R}$, $0 \cdot a = a \cdot 0 = 0 $</li>
+<li> 1 is unique. </li>
+<li> $\forall a \in \mathbb{R}$, if $a \cdot b = 0$, then either $a = 0$ or $b = 0$ </li>
+<li> 0 is unique. </li>
+</ol>
+</p>
+
+<p> Hey! We're just one-third the way through that first theorem. Go look at some cats in sinks.</p>
+
+<p> TOTALLY ORDERED: $\forall a,b \in \mathbb{R}$, it must be that $a < b$ or $a > b$ or $a = b$</p>
+
+<p> Here are some consequences of the real line being totally ordered:</p>
+
+<ol>
+<li> $\forall a \in \mathbb{R}$, $a \neq 0$, a^{2} > 0$. In particular, $1 = 1 \cdot 1 = 1^{2} > 0$</li>
+<li> $\forall a \in \mathbb{R} \setminus \{0\}$, $a > 0 \implies a^{-1} > 0$</li>
+<li> if $a < b$, then $a \cdot c < b \cdot c$ if $c > 0$ and $a \cdot c > b \cdot c$ if $c < 0$  </li>
+<li> if $a>b$, then $\forall c \in \mathbb{R}$, $a+c>b+c$</li>
+</ol>
+
+<p><b><i>Proof</i>: Consequence 4:</b></p>
+
+<p> Suppose $a > b$. Then $a-b>0$.</p>
+<p> Notice $a-b= a -b +c -c = (a+c) - (b+c)$ </p>
+<p> So $(a+c) - (b+c) >0 /iff a + c > b + c$ </p>
+<p> And we're done! </p>
+</body>
+</html>
