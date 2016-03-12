@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Lecture 2</title>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+<h2>Lecture 2: The real number system, $\mathbb{R}$</h2>
+
+<b> Theorem (Existance of Reals): There exists a totally ordered field satisfying the completeness axiom, which contains the rationals $\mathbb{Q}$ as a subfield. </b> 
+
+<p> Why is it true that $\mathbb{Q}$ is a subfield of $\mathbb{R}$? 
+
+<p> Consider the properties of integers</p>
+
+<ul>
+<li>Every $x \in \mathbb{Q}$ can be written $ x = \frac{p}{q}$, where p and q are integers and at least $p$ or $q$ is odd.</li>
+<li>If $n^2$ is even for $n \in \mathbb{N}$, then $n$ is even.</li>
+</ul>
+<p><b><i>Proof</i>: There is no rational whose square equals 2.</b></p>
+<p> This proof will be by contradiction, ie suppose $x \in \mathbb{Q}$ and $x^2=2$</p>
+<p> So $x^2 = 2 \iff \frac{p^2}{q^2} = 2 \iff p^2 = 2q^2 \implies p^2$ is even</p>
+<p> If $p^2$ is even for $p \in \mathbb{N}$, then $p$ is even. </p>
+<p> $p=2p'$ for $p' \in \mathbb{Z}$. </p>
+<p> $p^2 = 2q^2 \iff (2p')^2 = 2q^2 \iff 2p'^2 = q^2 \implies q^2$ is even. </p>
+<p> If $q^2$ is even for $q \in \mathbb{N}$, then $q$ is even. </p>
+<p> Contradiction! $p$ or $q$ must be odd. The assertion is true. $\blacksquare$ </p>
+
+<p> <b> Definition: A set is an aggregate/collection of (for our purposes, real) numbers. </b> </p>
+<p> Examples:
+<ul>
+<li>$S = \{1, 2, 3, \frac{4}{5} \}$ </li>
+<li>$S = \mathbb{N}$</li>
+<li>$S = \{x \in \mathbb{Q}$ s.t. $x + 7 = 9 \} $</li>
+<li>$S = \{x \in \mathbb{Q}$ s.t. $x > 7 \} $</li>
+<li>$S = \emptyset$ (empty set)</li>
+</ul>
+</p>
+
+<p> Here are some different ways to say the same thing: </p>
+<ul>
+<li>$x$ is in $S$ </li>
+<li>$x$ is an element of $S$ </li>
+<li>$x$ is a member of $S$ </li>
+<li> $S$ contains $x$ </li>
+<li>$x \in S$ </li>
+<li>$S \ni x$ </li>
+</ul> </p>
+<p> <b> Definition: $M \in \mathbb{R}$ is an upper bound for for S (ie $S$ is bounded above by $M$) iff $\forall x \in S$, $x \subseteq M$. (Another way to say the last part: every element of S is less than or equal to M) </b> </p>
+
+<p> Example: $S = \{x \in \mathbb{Q}$ s.t. $ x \leq 4\}$. The upper bound $M = 4$, or any number greater than 4. $5, 6 ,7, \frac{100}{11}$ are all upper bounds. </p>
+
+<p> <b> Definition: $S$ has a least upper bound (also called L.U.B. or supremum) $L$ iff: 
+<ol>
+<li>$L$ is an upper bound for $S$. </li>
+<li>if $M$ is another upper bound for $S$, then $L \leq M$. </li>
+</ol> 
+<p> Here are some different ways to say the same thing: </p>
+<ul>
+<li>$L$ is the least upper bound of $S$ </li>
+<li>$L$ is the supremum of $S$ </li>
+<li>$L = L.U.B.(S)$ </li>
+<li>$L = sup(S)$ </li>
+</ul> </p>
+
+<p><b><i>Claim</i>:If a supremum $L$ exists, then it is unique.</b></p>
+<p><b><i>Proof</i>: </b></p>
+<p> This proof will be by contradiction, ie suppose $x \in \mathbb{Q}$ and $x^2=2$</p>
+<p> So $x^2 = 2 \iff \frac{p^2}{q^2} = 2 \iff p^2 = 2q^2 \implies p^2$ is even</p>
+<p> If $p^2$ is even for $p \in \mathbb{N}$, then $p$ is even. </p>
+<p> $p=2p'$ for $p' \in \mathbb{Z}$. </p>
+<p> $p^2 = 2q^2 \iff (2p')^2 = 2q^2 \iff 2p'^2 = q^2 \implies q^2$ is even. </p>
+<p> If $q^2$ is even for $q \in \mathbb{N}$, then $q$ is even. </p>
+<p> Contradiction! $p$ or $q$ must be odd. The assertion is true. $\blacksquare$ </p>
+
+
+</ul>
+</body>
+</html>
