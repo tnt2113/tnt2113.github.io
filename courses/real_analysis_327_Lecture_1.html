@@ -77,7 +77,7 @@ Now throw in multiplication.
 <p> Here are some consequences of the real line being totally ordered:</p>
 
 <ol>
-<li> $\forall a \in \mathbb{R}$, $a \neq 0$, a^{2} > 0$. In particular, $1 = 1 \cdot 1 = 1^{2} > 0$</li>
+<li> $\forall a \in \mathbb{R}$, $a \neq 0$, $a^{2} > 0$. In particular, $1 = 1 \cdot 1 = 1^{2} > 0$</li>
 <li> $\forall a \in \mathbb{R} \setminus \{0\}$, $a > 0 \implies a^{-1} > 0$</li>
 <li> if $a < b$, then $a \cdot c < b \cdot c$ if $c > 0$ and $a \cdot c > b \cdot c$ if $c < 0$  </li>
 <li> if $a>b$, then $\forall c \in \mathbb{R}$, $a+c>b+c$</li>
@@ -86,8 +86,33 @@ Now throw in multiplication.
 <p><b><i>Proof</i>: Consequence 4:</b></p>
 
 <p> Suppose $a > b$. Then $a-b>0$.</p>
-<p> Notice $a-b= a -b +c -c = (a+c) - (b+c)$ </p>
-<p> So $(a+c) - (b+c) >0 /iff a + c > b + c$ </p>
+<p> Notice $a-b = a -b +c -c = (a+c) - (b+c)$ </p>
+<p> So $(a+c) - (b+c) >0 \iff a + c > b + c$ </p>
 <p> And we're done! </p>
+
+<p> We'll save the completeness axiom for Lecture 2, and end with some definitions. </p>
+
+<p> <b> Definition: $\forall a,b \in \mathbb{R}$, the "maximum" of $a$ and $b$ is: </b>
+
+\[ max(a,b) =
+  \begin{cases}
+    a       & \quad \text{if } a \geq b \\
+    b  & \quad \text{if } a < b\\
+  \end{cases}
+\]
+</p>
+<p> <b> Definition: $\forall a,b \in \mathbb{R}$, the "minimum" of $a$ and $b$ is: </b>
+
+\[ min(a,b) =
+  \begin{cases}
+    b       & \quad \text{if } a \geq b \\
+    a  & \quad \text{if } a < b\\
+  \end{cases}
+\]
+</p>
+<p> <b> Definition: A set $S \subset \mathbb{R}$ is an aggregate of numbers. </b> </p>
+
+<p>  Examples: $S = \{1, 2, 3\}$ or  $S = \mathbb{N}$ </p>
+
 </body>
 </html>
