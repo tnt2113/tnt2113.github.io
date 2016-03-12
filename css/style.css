@@ -1,0 +1,23 @@
+/* Set the font size of "first-li" to 25px */
+body{
+    width:1060px;
+    margin:50px auto;
+    background: #000000
+}
+h1 {
+    text-align: center;
+    color: #00b386;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+h2 {
+    text-align: center;
+    color: #00b386;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+p {
+    text-align: center;
+    color: #00b386;
+    font-family: "Lucida Console", Monaco, monospace;
+}
