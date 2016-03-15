@@ -56,7 +56,7 @@
 
 <p> Example: $S = \{x \in \mathbb{Q}$ s.t. $ x \leq 4\}$. The upper bound $M = 4$, or any number greater than 4. $5, 6 ,7, \frac{100}{11}$ are all upper bounds. </p>
 
-<p> <b> Definition: $S$ has a least upper bound (also called L.U.B. or supremum) $L$ iff: 
+<p> <b> Definition: $S$ has a least upper bound (also called L.U.B. or supremum) $L$ iff: </b>
 <ol>
 <li>$L$ is an upper bound for $S$. </li>
 <li>if $M$ is another upper bound for $S$, then $L \leq M$. </li>
@@ -71,15 +71,62 @@
 
 <p><b><i>Claim</i>:If a supremum $L$ exists, then it is unique.</b></p>
 <p><b><i>Proof</i>: </b></p>
-<p> This proof will be by contradiction, ie suppose $x \in \mathbb{Q}$ and $x^2=2$</p>
-<p> So $x^2 = 2 \iff \frac{p^2}{q^2} = 2 \iff p^2 = 2q^2 \implies p^2$ is even</p>
-<p> If $p^2$ is even for $p \in \mathbb{N}$, then $p$ is even. </p>
-<p> $p=2p'$ for $p' \in \mathbb{Z}$. </p>
-<p> $p^2 = 2q^2 \iff (2p')^2 = 2q^2 \iff 2p'^2 = q^2 \implies q^2$ is even. </p>
-<p> If $q^2$ is even for $q \in \mathbb{N}$, then $q$ is even. </p>
-<p> Contradiction! $p$ or $q$ must be odd. The assertion is true. $\blacksquare$ </p>
+<p> Suppose $L$ and $L'$ satisfy the definition of supremum.</p>
+<p> $L$ is an upper bound for $S$</p>
+<p> $L'$ satisfies point 2, so $L' \leq L$. </p>
+<p> Reverse the roles, and $L \leq L'$. </p>
+<p> This implies that $L=L'$ so $L=sup(S)$ is unique. $\blacksquare$ </p>
 
+<p> Definition: If $M$ is an upper bound for $S$ and $M \in S$, then $M = max S$. (e.g. $M$ is a maximal element of $S$.)</p>
 
+<p>Claim: if $M = max S$ exists, then it is unique.</p> 
+
+<p>Example: $S = \{1 - \frac{1}{n}$ s.t. $n \in N\}$</p>
+
+<p>Recognize that $S$ is bounded above by 1, but $1 \notin S$.</p>
+
+<p>In fact, $sup(S) = 1$, but $max(S)$ does not exist. </p>
+
+<p>Example: A set of rationals may be bounded above such that its supremum (if it exists) is not rational. $S = \{x \in \mathbb{Q}$ such that $x^2 \leq 2\}$. $sup(S) = \sqrt(2)$ but $\sqrt(2) \notin \mathbb{Q}$. </p>
+
+<p>Completeness axiom: If $S$ is a nonempty subset of $\mathbb{R}$ that is bounded above, then $sup(S)$ exists in $\mathbb{R}$.</p>
+
+<p>Note: We will show that the completeness axiom allows to define $\sqrt(2)$ as a real number.</p>
+
+<p>Proposition: Let $S$ be a set, $S \subset \mathbb{R}$, then $L$ is the supremum of $S \iff \forall x \in S$, $x \leq L$</p>
+<p>$\forall \epsilon > 0$, $\exists x \in S$ such that $L - \epsilon < x \iff L < x + \epsilon$.</p>
+
+<p>Proof: By contradiction, suppose $L$ = sup $S$</p>
+<p>$L$ is an upper bound so (1) is satisfied. </p>
+<p>By contradiction, if (2) is not satisfied, then $\exists \epsilon > 0$, $\forall x \in S$, $L = \epsilon \geq x \implies L - \epsilon$ is an upper bound for $S$.</p>
+<p>Since $L$ = sup$S$, $L \leq L - \epsilon \iff \epsilon \leq 0$, but this is a contradiction! (2) holds true. </p>
+
+<p>Suppose (1), (2) are true. (1) implies that $L$ is an upper bound. </p>
+
+<p>We want to show that if M is an upper bound for $S$, then $L \leq M$. </p>
+
+<p>Let $M$ be another upper bound for $S$, and by contradiction, assume that $L > M$, set $\epsilon = \frac{L - M}{2} > 0$.</p>
+
+<p>By (2), $\exists x \in S$, $L - \epsilon < x$. $L \iff L - \frac{L}{2} + \frac{M}{2} = \frac{L + M}{2}$.</p>
+
+<p>Because $M$ is an upper bound, $x \leq M$. </p>
+
+<p>We get $\frac{L +M}{2} < x \leq M \implies \frac{L + M}{2} \leq M \implies L + M \leq 2 \implies L \leq M$</p>
+
+<p>And we have another contradiction! So $L$ = sup$S$</p>
+
+<p>Define $\sqrt(2)$: Let $S = \{x \in \mathbb{R}$ s.t. $x > 0$ and $x^2 \leq 2\}$. That is, $S$ is bounded above by 2. $x^2 \leq 2 \leq 4 = 2^2$ so $x^2 - 2^2 \leq 0$. </p>
+
+<p>Since $x + 2 > 0$, then $x -2 \leq 0 \implies x \leq 2$</p>
+
+<p>By the completeness axiom, sup $S$ exists. Call it $C$. Can prove that $c^2 = 2$ and $c > 0$. This defines $c$ as "$\sqrt(2)$"</p>
+
+<p>More generally, for any $a > 0$, $a \in \mathbb{R}$, we can define:</p>
+<ul>
+<li> $\sqrt(2)$ = sup$\{s \in \mathbb{R}$ such that $x > 0, x^2 \leq a\}$ </li>
+<li> $\sqrt[p]{a}$ = sup$\{s \in \mathbb{R}$ such that $x > 0, x^p \leq a\}$ for $p \in \mathbb{N}$ </li>
 </ul>
+
+<p>The construction of these only depends on field operators. The completeness axiom allows  us to define algebraic roots as real numbers.</p> 
 </body>
 </html>
