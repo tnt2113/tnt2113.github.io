@@ -195,8 +195,8 @@ jQuery(document).ready(function($) {
 <p>Recall: For $S \subset \mathbb{R}$ bounded above and not empty, sup $S$ always exists, but max $S$ may not always exist.</p>
 <p>Proposition 2: If $S \subset \mathbb{Z}$, $S \neq \emptyset$, bounded above, then max $S$ exists.</p>
 <p>Proof:</p>
-<p>By the completeness axiom, sup $S$ = $a$ always exists. $a$ is the least upper bound, so $a - 1$ is not an upper bound for $S$. So there exists $m \in S$ such that $a - 1 < m \iff a < m + 1$. So $\forall n \in S$, $n \leq a < m+1$ so $S \subset (-\inf, m + 1) = \{x \in \mathbb{R}$ such that $x < m + 1\}$</p>
-<p>But by Prop 1, $(m, m+1)$ has no integer in it. So $S \cap (m, m +1) = \emptyset$. $S \subset (-\inf, m+1)$ with $S \cap (m, m +1) = \emptyset$ so $S \subset (-\inf, m]$ since $m \in S$. $m$ is an upper bound for $S$ and since $m \in S$, $m = max S$. $\blacksquare$</p>
+<p>By the completeness axiom, sup $S$ = $a$ always exists. $a$ is the least upper bound, so $a - 1$ is not an upper bound for $S$. So there exists $m \in S$ such that $a - 1 < m \iff a < m + 1$. So $\forall n \in S$, $n \leq a < m+1$ so $S \subset (-\infty, m + 1) = \{x \in \mathbb{R}$ such that $x < m + 1\}$</p>
+<p>But by Prop 1, $(m, m+1)$ has no integer in it. So $S \cap (m, m +1) = \emptyset$. $S \subset (-\infty, m+1)$ with $S \cap (m, m +1) = \emptyset$ so $S \subset (-\infty, m]$ since $m \in S$. $m$ is an upper bound for $S$ and since $m \in S$, $m = max S$. $\blacksquare$</p>
 
 </main>
 </body>
