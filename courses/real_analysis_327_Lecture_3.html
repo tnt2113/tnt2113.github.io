@@ -125,15 +125,15 @@ jQuery(document).ready(function($) {
 <li> $\forall m \in \mathbb{R}$ that are lower bounds of $S$, $m \leq l$ </li>
 </ol>
 </p>
-<p>Remember, by the completeness axiom, every $S \neq \empty$ bounded above admits a supremum. </p>
+<p>Remember, by the completeness axiom, every $S \neq \emptyset$ bounded above admits a supremum. </p>
 
-<p>Theorem: every $S \subset \mathbb{R}$, $S \neq \empty$ bounded below, admits a greatest lower bound or infinum.</p> 
+<p>Theorem: every $S \subset \mathbb{R}$, $S \neq \emptyset$ bounded below, admits a greatest lower bound or infinum.</p> 
 
 <p>Let's prove this using a reflection argument. </p> 
 
 <p>Proof:</p>
 
-<p>Let $S \subset \mathbb{R}$, $S \neq \empty$, bounded below. </p>
+<p>Let $S \subset \mathbb{R}$, $S \neq \emptyset$, bounded below. </p>
 
 <p>Define $S' = \{-x, x\in S\}$</p>
 
@@ -156,7 +156,7 @@ jQuery(document).ready(function($) {
 
 <p>$m$ is a lower bound for $S \iff \forall x \in S$, $m \leq X \iff -m \geq -x \iff \forall x' \in S'$, $x' \leq -m$.</p>
 <p>So $-m$ is an upper bound for $S'$, since $L = sup S'$</p>
-<p>so $L \leq -m \iff m \leq -L$. $\blackbox$</p>
+<p>so $L \leq -m \iff m \leq -L$. $\blacksquare$</p>
 
 <p>We can derive everything about lower bounds based on stuff about upper bounds. </p>
 
