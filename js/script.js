@@ -13,7 +13,7 @@ var App = {
     var greetText = 
       "####################################################################################\n"+
       "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
-      "|\t\tWelcome, I'm " + commandText('Tara') + " - statistical programmer and coffee aficionado. \t\t|\n"+
+      "|\t\tYou have reached " + commandText('Tara') + " - statistical programmer and coffee aficionado. \t|\n"+
       "|\t\tPlease type " +commandText('ls')+" or " +commandText('help')+ " for a list of commands.    \t\t\t\t\t\t|\n"+
       "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
       "####################################################################################\n";
