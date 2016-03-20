@@ -64,15 +64,14 @@ var App = {
     this.echo("|  " + commandText("courses") + "            - Course notes");
     this.echo("|");
     this.echo("|  " + commandText("online") + "             - Find me on the internet");
-    this.echo("|");
-    this.echo("|  " + commandText("all") + "                - [[b;#00DE12;]Run all commands (recommended)]");
+   // this.echo("|");
+   //  this.echo("|  " + commandText("all") + "                - [[b;#00DE12;]Run all commands (recommended)]");
     this.echo();
   },
   online: function(){
     this.echo();
     this.echo("|  " + commandText("GitHub") + ":       http://github.com/tnt2113");
     this.echo("|  " + commandText("LinkedIn") + ":     https://www.linkedin.com/in/tara-templin-7360b174");
-    this.echo("|  " + commandText("Blog") + ":         http://tnt2113.github.io/blog");    
     this.echo();
   },
   github: function(){
@@ -246,7 +245,6 @@ var App = {
     that.clear();
     that.echo("[[g;#5BD100;]TARA TEMPLIN]");
     that.echo("Statistical Programmer");
-    that.echo("Econometrics, Forecasting, Machine Learning");
     that.echo();
     that.echo("[[g;#D13F00;]EXPERIENCE]");
     that.echo("[[g;#B2D100;]Researcher at IHME 2015]");
