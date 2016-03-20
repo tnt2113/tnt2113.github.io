@@ -11,12 +11,12 @@ var App = {
   intro: function(ret){
     if (typeof ret === 'undefined') ret = false;
     var greetText = 
-      "####################################################################################\n"+
-      "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
-      "|\t\tYou have reached " + commandText('Tara') + " - statistical programmer and coffee aficionado. \t|\n"+
-      "|\t\tPlease type " +commandText('ls')+" or " +commandText('help')+ " for a list of commands.    \t\t\t\t\t\t|\n"+
-      "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
-      "####################################################################################\n";
+      "################################################################################################\n"+
+      "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
+      "|\t\tWelcome, You have reached " + commandText('Tara') + " - statistical programmer and coffee aficionado.\t\t|\n"+
+      "|\t\tPlease type " +commandText('ls')+" or " +commandText('help')+ " followed by the ENTER key to access a list of commands.\t\t|\n"+
+      "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
+      "################################################################################################\n";
     if (!ret) {
         this.echo("\n" + greetText);
     } else {
