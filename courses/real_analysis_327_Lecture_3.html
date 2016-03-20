@@ -166,8 +166,37 @@ jQuery(document).ready(function($) {
 
 <p>Definition (the distribution of $\mathbb{Z}$): $\forall c \in \mathbb{R}$, $\exists ! n \in \mathbb{Z}$, $c \leq n < c + 1 \iff n \in [c, c+1)$</p>
 
-<p>Definition (the distribution of $\mathbb{Q}$): </p>
+<p>Definition (the distribution of $\mathbb{Q}$): $\forall a,b$ such that $a < b$ and $a,b \in \mathbb{R}$, $\exists x \in \mathbb{Q}, x \in (a,b) </p>
 
+<p>$\mathbb{Q}$ populated \mathbb{R} in a dense way.</p>
+
+<p>Thm (Archimedian property): The following equivalent statements hold true:</p>
+<ol>
+	<li>$\forall c > 0$, $\exists n \in \mathbb{N}$ such that $n > c$</li>
+	<li>$\forall \epsilon > 0$, $\exists n \in \mathbb{N}$ such that $0 < \frac{1}{n} < \epsilon$</li>
+</ol>
+</p>
+
+
+<p>Proof: </p>
+
+<p>WTS: (1) $\iff$ (2) given $c>0$ and $\epsilon = \frac{1}{c} > 0$.</p>
+<p>If $n$ is such that $n > c$, then $\frac{1}{n} < \epsilon = \frac{1}{c}$ and vice versa. so (1) $\iff$ (2), as we said. We only need to prove (1)</p>
+
+<p>By contradiction, suppose (1) does not hold. $\exists c > 0$, $\forall n \in \mathbb{N}$, $n \leq C \implies \mathbb{N}$ is bounded above $\implies$ by the completeness axiom, $\exists$ sup $\mathbb{N} = L$. </p>
+
+<p>Since $L$ is the supremum, $L - \frac{1}{2}$ is not an upper bound for $\mathbb{N}$.</p>
+<p>$\exists n \in \mathbb{N}$ such that $L - \frac{1}{2} < n$</p>
+<p>Then $L < L + \frac{1}{2} = L - \frac{1}{2} + 1 < n + 1$</p>
+<p>But $n + 1 \in \mathbb{N}$ and $L$ is an upper bound for $\mathbb{N}$ which is a contradiction! $\blacksquare$</p>
+
+<p>Proposition 1: $\forall n \in \mathbb{Z}$, there is no integer inside $(n, n +1)$</p>
+
+<p>Recall: For $S \subset \mathbb{R}$ bounded above and not empty, sup $S$ always exists, but max $S$ may not always exist.</p>
+<p>Proposition 2: If $S \subset \mathbb{Z}$, $S \neq \emptyset$, bounded above, then max $S$ exists.</p>
+<p>Proof:</p>
+<p>By the completeness axiom, sup $S$ = $a$ always exists. $a$ is the least upper bound, so $a - 1$ is not an upper bound for $S$. So there exists $m \in S$ such that $a - 1 < m \iff a < m + 1$. So $\forall n \in S$, $n \leq a < m+1$ so $S \subset (-\inf, m + 1) = \{x \in \mathbb{R}$ such that $x < m + 1\}$</p>
+<p>But by Prop 1, $(m, m+1)$ has no integer in it. So $S \intersection (m, m +1) = \emptyset$. $S \subset (-\inf, m+1)$ with $S \intersection (m, m +1) = \emptyset$ so $S \subset (-\inf, m]$ since $m \in S$. $m$ is an upper bound for $S$ and since $m \in S$, $m = max S$.</p>
 </main>
 </body>
 </html>
