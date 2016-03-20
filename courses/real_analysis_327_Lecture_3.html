@@ -107,66 +107,66 @@ jQuery(document).ready(function($) {
 
 <p>An open interval does not include it's end points. </p>
 
-<p>Def: a closed interval [a, b], for a, b \in \mathbb{R}, a < b is that the set (a, b) = \{x \in \mathbb{R}, a \leq x \leq b \}</p>
+<p>Def: a closed interval $[a, b]$, for $a, b \in \mathbb{R}$, $a < b$ is that the set $(a, b) = \{x \in \mathbb{R}, a \leq x \leq b \}$</p>
 
 <p>We can also have half-closed, half open intervals: 
 <ul>
-<li> [a, b) = \{x \in \mathbb{R}, a \leq x < b \} </li>
-<li> (a, b] = \{x \in \mathbb{R}, a < x \leq b \} </li>
+<li> $[a, b) = \{x \in \mathbb{R}$, $a \leq x < b$ \} </li>
+<li> $(a, b] = \{x \in \mathbb{R}$, $a < x \leq b$ \} </li>
 </ul>
 </p>
-<p>Example: S = (0, 1), 1 \notin S so we can show sup S = 1.</p>
+<p>Example: $S = (0, 1)$, $1 \notin S$ so we can show $sup S = 1$.</p>
 
-<p>Definition: S is bounded below by m \in \mathbb{R} if \forall x \in S, m \leq x.</p>
+<p>Definition: $S$ is bounded below by $m \in \mathbb{R}$ if $\forall x \in S$, $m \leq x$.</p>
 
-<p>Definition: S, bounded below, admits a greatest lower bound (aka GLB or infinum), if there exists l such that:
+<p>Definition: $S$, bounded below, admits a greatest lower bound (aka GLB or infinum), if there exists $l$ such that:
 <ol>
-<li> l is a lower bound for S </li>
-<li> \forall m \in \mathbb{R} that are lower bounds of S, m \leq l </li>
+<li> $l$ is a lower bound for $S$ </li>
+<li> $\forall m \in \mathbb{R}$ that are lower bounds of $S$, $m \leq l$ </li>
 </ol>
 </p>
-<p>Remember, by the completeness axiom, every S \neq \empty bounded above admits a supremum. </p>
+<p>Remember, by the completeness axiom, every $S \neq \empty$ bounded above admits a supremum. </p>
 
-<p>Theorem: every S \subset \mathbb{R}, S \neq \empty bounded below, admits a greatest lower bound or infinum.</p> 
+<p>Theorem: every $S \subset \mathbb{R}$, $S \neq \empty$ bounded below, admits a greatest lower bound or infinum.</p> 
 
 <p>Let's prove this using a reflection argument. </p> 
 
 <p>Proof:</p>
 
-<p>Let S \subset \mathbb{R}, S \neq \empty, bounded below. </p>
+<p>Let $S \subset \mathbb{R}$, $S \neq \empty$, bounded below. </p>
 
-<p>Define S' = {-x, x\in S}</p>
+<p>Define $S' = \{-x, x\in S\}$</p>
 
-<p>Claim: S' is bounded above.</p>
+<p>Claim: $S'$ is bounded above.</p>
 
-<p>Let m be a lower bound for S. Then \forall x \in S, m \leq x \iff -x \leq -m</p>
-<p>This means: \forall x' \in S', x' \leq -m \implies -m is an upper bound for S'.</p>
-<p>By the completeness axiom, S' has an infinum, called L.</p> 
+<p>Let $m$ be a lower bound for $S$. Then $\forall x \in S$, $m \leq x \iff -x \leq -m$</p>
+<p>This means: $\forall x' \in S'$, $x' \leq -m \implies -m$ is an upper bound for $S'$.</p>
+<p>By the completeness axiom, $S'$ has an infinum, called $L$.</p> 
 
-<p>Claim: -L = inf S = G.L.B S since L = L.U.B S' then:
+<p>Claim: $-L = inf S$ since $L = sup S'$ then:
 <ol>
-	<li>\forall x \in S', x \leq L</li>
-	<li>\forall M, U.B of S', L \leq M</li>
+	<li>$\forall x \in S'$, $x \leq L$</li>
+	<li>$\forall M$, U.B of $S'$, $L \leq M$</li>
 </ol> 
 </p>
-<p>Let x \in S. Then -x \in S', so by (1) -x \leq L \iff -L \leq x.</p>
-<p>So \forall x \in S, -L \leq x. -L is a lower bound of S. </p>
+<p>Let $x \in S$. Then $-x \in S'$, so by (1) $-x \leq L \iff -L \leq x$.</p>
+<p>So $\forall x \in S$, $-L \leq x$. $-L$ is a lower bound of $S$. </p>
 
-<p>Let m be a lower bound for S. Claim: m \leq -L</p>
+<p>Let $m$ be a lower bound for $S$. Claim: $m \leq -L$</p>
 
-<p>m is a lower bound for S \iff \forall x \in S, m \leq X \iff -m \geq -x \iff \forall x' \in S', x' \leq -m.</p>
-<p>So -m is an upper bound for S', since L = L.U.B(S')</p>
-<p>so L \leq -m \iff m \leq -L. \blackbox</p>
+<p>$m$ is a lower bound for $S \iff \forall x \in S$, $m \leq X \iff -m \geq -x \iff \forall x' \in S'$, $x' \leq -m$.</p>
+<p>So $-m$ is an upper bound for $S'$, since $L = sup S'$</p>
+<p>so $L \leq -m \iff m \leq -L$. $\blackbox$</p>
 
 <p>We can derive everything about lower bounds based on stuff about upper bounds. </p>
 
 <p>NEW THING!! </p>
 
-<p>The distribution of \mathbb{Q} and \mathbb{Z}</p>
+<p>The distribution of $\mathbb{Q}$ and $\mathbb{Z}$</p>
 
-<p>Definition (the distribution of \mathbb{Z}): \forall c \in \mathbb{R}, \exists ! n \in \mathbb{Z}, c \leq n < c + 1 \iff n \in [c, c+1)</p>
+<p>Definition (the distribution of $\mathbb{Z}$): $\forall c \in \mathbb{R}$, $\exists ! n \in \mathbb{Z}$, $c \leq n < c + 1 \iff n \in [c, c+1)$</p>
 
-<p>Definition (the dirstbution of \mathbb{Q}): </p>
+<p>Definition (the distribution of $\mathbb{Q}$): </p>
 
 </main>
 </body>
