@@ -62,7 +62,6 @@ var App = {
     this.echo("|  " + commandText("work") + "               - Professional Experience");
     this.echo("|  " + commandText("projects") + "           - Research projects");
     this.echo("|  " + commandText("courses") + "            - Course notes");
-    this.echo("|  " + commandText("coffee") + "             - Coffee");    
     this.echo("|");
     this.echo("|  " + commandText("online") + "             - Find me on the internet");
    // this.echo("|");
