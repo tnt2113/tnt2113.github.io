@@ -62,6 +62,7 @@ var App = {
     this.echo("|  " + commandText("work") + "               - Professional Experience");
     this.echo("|  " + commandText("projects") + "           - Research projects");
     this.echo("|  " + commandText("courses") + "            - Course notes");
+    this.echo("|  " + commandText("coffee") + "             - Coffee");    
     this.echo("|");
     this.echo("|  " + commandText("online") + "             - Find me on the internet");
    // this.echo("|");
@@ -229,6 +230,11 @@ var App = {
   mv: function(){
     this.echo();
     this.echo("|  dont't move!");
+    this.echo();
+  },
+  pwd: function(){
+    this.echo();
+    this.echo("|  http://tnt2113.github.io");
     this.echo();
   },
   cp: function(){
