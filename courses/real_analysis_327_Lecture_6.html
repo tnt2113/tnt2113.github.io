@@ -127,6 +127,13 @@ $\implies |a' - a| < \frac{|a' - a|}{2} $ which is a contradiction! So $a \neq a
 <p>Want to show: $\forall \epsilon > 0, \exists N \in \mathbb{N}, n \geq N \implies |\frac{1}{n} - 0| < \epsilon$ </p>
 <p> Notice that: $|\frac{1}{n} - 0| = |\frac{1}{n}| = \frac{1}{n}$, so really we want to show: $\forall \epsilon > 0, \exists N \in \mathbb{N}, n \geq N \implies \frac{1}{n} < \epsilon$. Will use the Archimedian Principle. </p>
 <p>Let $\epsilon > 0$. By the Archimedian Principle, $\exists N$ such that $\frac{1}{N} < \epsilon$, then, if $n \geq N, \frac{1}{n} \leq \frac{1}{N} < \epsilon$. $\qquad \qquad \qquad \square$</p>
+
+<p>Example: The sequence $a_{n} = (-1)^n$ does not converge. $a_{1} = -1, a_{2} = 1, a_{3} = -1, ...$ We don't expect it to approach any limit.</p>
+
+<p>Claim: If $\lim_{x\to\infty} a_{n}$ exists, then $\lim_{x\to\infty} |a_{n+1} - a_{n}| = 0$.  </p>
+<p>If $\lim_{x\to\infty} |a_{n+1} - a_{n}| \neq 0$ then $\lim_{x\to\infty} a_{n}$ does not exist.  </p>
+
+<p>Example: The sequence $a_{n} = (-1)^n$ does not converge. In this case, $|a_{n+1} - a_{n}| = |(-1)^{n+1} - (-1)^{n}| = 2$. So $\lim_{x\to\infty} |a_{n+1} - a_{n}| = 2 \neq 0$ and the sequence does not converge.</p>
 </main>
 </body>
 </html>
