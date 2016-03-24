@@ -114,16 +114,19 @@ jQuery(document).ready(function($) {
 (1) $\forall \epsilon > 0, \exists N \in \mathbb{N}, n \geq N \implies |a_{n} - a| < \epsilon$<br>
 (2) $\forall \epsilon > 0, \exists N' \in \mathbb{N}, n \geq N' \implies |a_{n} - a'| < \epsilon$<br>
 Let $\epsilon = \frac{|a' - a|}{4} > 0$<br>
-By (1), \exists N_{1} \in \mathbb{N}, n \geq N_{1} \implies |a_{n} - a| < \epsilon$<br>
-By (2), \exists N_{2} \in \mathbb{N}, n \geq N_{2} \implies |a_{n} - a'| < \epsilon$<br>
+By (1), $\exists N_{1} \in \mathbb{N}, n \geq N_{1} \implies |a_{n} - a| < \epsilon$<br>
+By (2), $\exists N_{2} \in \mathbb{N}, n \geq N_{2} \implies |a_{n} - a'| < \epsilon$<br>
 Let n = max($N_{1}, N_{2}$), then $|a_{n} - a| < \epsilon = \frac{|a' - a|}{4}$ and $|a_{n} - a'| < \epsilon = \frac{|a' - a|}{4}$ <br>
 Using the triangle inequality, $|a' - a| = |(a - a_{n}) -(a' - a_{n})| \leq |a - a_{n}| + |a' - a_{n}| < \frac{|a' - a|}{4} + \frac{|a' - a|}{4} = \frac{|a' - a|}{2}$ <br>
-$\implies |a' - a| < \frac{|a' - a|}{2} $ which is a contradiction! So $a \neq a'$ is impossible and $\lim_{x\to\infty} a_{n}$ is unique.                $\square$ <br>
+$\implies |a' - a| < \frac{|a' - a|}{2} $ which is a contradiction! So $a \neq a'$ is impossible and $\lim_{x\to\infty} a_{n}$ is unique.  $\qquad \qquad \qquad \square$ <br>
 <br>
-
 </blockquote>
 </p>
 
+<p>Example: prove that $\lim_{x\to\infty} \frac{1}{n} = 0$ </p>
+<p>Want to show: $\forall \epsilon > 0, \exists N \in \mathbb{N}, n \geq N \implies |\frac{1}{n} - 0| < \epsilon$ </p>
+<p> Notice that: $|\frac{1}{n} - 0| = |\frac{1}{n}| = \frac{1}{n}$, so really we want to show: $\forall \epsilon > 0, \exists N \in \mathbb{N}, n \geq N \implies \frac{1}{n} < \epsilon$. Will use the Archimedian Principle. </p>
+<p>Let $\epsilon > 0$. By the Archimedian Principle, $\exists N$ such that $\frac{1}{N} < \epsilon$, then, if $n \geq N, \frac{1}{n} \leq \frac{1}{N} < \epsilon$. $\qquad \qquad \qquad \square$</p>
 </main>
 </body>
 </html>
