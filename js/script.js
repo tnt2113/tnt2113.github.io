@@ -121,7 +121,7 @@ var App = {
     this.echo("|");
     this.echo("|  About:        I live in " + commandText('Seattle') +" and work for the " + commandText('Institute for Health Metrics and Evaluation') +".");
     this.echo("|                My background is in Economics and Math, and I spent most of my time at Columbia studying global macroeconomics and econometrics."); 
-    this.echo("|                I like open data, reproducible research, and making complex statistical concepts easy to understand."); 
+    this.echo("|                I like reproducible research and making complex statistical concepts easy to understand."); 
     this.echo("|                Other interests include coffee, travel, book clubs, and disco music.");
     this.echo("|");
     this.echo("|  More here:   http://tnt2113.github.io/about");
@@ -142,11 +142,11 @@ var App = {
     this.echo("|");
     this.echo("|  [[g;#B2D100;]Statistical Computing] ");
     this.echo("|  " + commandText('Stata') + "                  ##[[g;#5BD100;]##################################################] ##");
-    this.echo("|  " + commandText('Mata') + "                   ##[[g;#5BD100;]############################################]       ##");    
-    this.echo("|  " + commandText('Python') + "                 ##[[g;#5BD100;]###########################################]        ##");
+    this.echo("|  " + commandText('Mata') + "                   ##[[g;#5BD100;]##############################################]     ##");    
+    this.echo("|  " + commandText('Python') + "                 ##[[g;#5BD100;]############################################]       ##");
     this.echo("|  " + commandText('R') + "                      ##[[g;#B2D100;]#######################################]            ##"); 
     this.echo("|  " + commandText('bash') + "                   ##[[g;#B2D100;]#######################################]            ##");            
-    this.echo("|  " + commandText('C++') + "                    ##[[g;#D13F00;]####################]                               ##");  
+    this.echo("|  " + commandText('C++') + "                    ##[[g;#D13F00;]#######################]                            ##");  
     this.echo("|");
     this.echo("|  [[g;#B2D100;]Interactive Data Viz] ");
     this.echo("|  " + commandText('Javascript') + "             ##[[g;#5BD100;]############################################]       ##");
@@ -162,8 +162,8 @@ var App = {
     this.echo("|  [[g;#B2D100;]Operating Systems] ");
     // this.echo("|  " + commandText("Native Mobile / Game Dev"));
     // this.echo("|");
-    this.echo("|  " + commandText('Windows') + "                ##[[g;#5BD100;]############################################]       ##");
-    this.echo("|  " + commandText('Linux') + "                  ##[[g;#B2D100;]##############################]                     ##");
+    this.echo("|  " + commandText('Windows') + "                ##[[g;#5BD100;]###############################################]    ##");
+    this.echo("|  " + commandText('Linux') + "                  ##[[g;#B2D100;]################################]                   ##");
     this.echo("|");
     this.echo("|  [[g;#B2D100;]Languages] ");
     // this.echo("|");
@@ -178,7 +178,7 @@ var App = {
     this.echo();
     this.echo("|  Site built by " + commandText('Tara Templin'));
     this.echo("|  Using " + commandText('Jquery Terminal Emulator') + " by " + commandText('Jakub Jankiewicz') + ": http://terminal.jcubic.pl");
-    this.echo("|  Shout out to the" + commandText('Examples Page') + " for excellent design principles and coding : http://terminal.jcubic.pl/examples.php");        
+    this.echo("|  Shout out to the " + commandText('Examples Page') + " for excellent design principles and coding : http://terminal.jcubic.pl/examples.php");        
     this.echo();
   },
   blog: function(){
@@ -249,7 +249,6 @@ var App = {
   mobile: function(){
     that.clear();
     that.echo("[[g;#5BD100;]TARA TEMPLIN]");
-    that.echo("Statistical Programmer");
     that.echo();
     that.echo("[[g;#D13F00;]EDUCATION]");
     that.echo("B.A in Econ-Math | Columbia");
@@ -260,11 +259,8 @@ var App = {
     that.echo("[[g;#B2D100;]Former politico at CGD/DOI]");
     that.echo("http://tnt2113.github.io/research");
     that.echo();
-    that.echo("[[g;#B2D100;]GitHub]");
-    that.echo("http://github.com/tnt2113");
-    that.echo();
-    that.echo("[[g;#D13F00;]Course Notes]");
-    that.echo("http://tnt2113.github.io/courses");
+    that.echo("[[g;#B2D100;]Research]");
+    that.echo("http://tnt2113.github.io/research");
     that.echo();
     that.echo("Access with desktop for more!");
     that.echo();
@@ -273,7 +269,6 @@ var App = {
 
 jQuery(document).ready(function($) {
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      //window.location.href = "http://keon.io/resume";
     $('body').terminal(App, {
       greetings: function(cb){
         that = this;
