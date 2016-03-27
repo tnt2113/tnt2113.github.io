@@ -259,9 +259,6 @@ var App = {
     that.echo("[[g;#B2D100;]Former politico at CGD/DOI]");
     that.echo("http://tnt2113.github.io/research");
     that.echo();
-    that.echo("[[g;#B2D100;]Research]");
-    that.echo("http://tnt2113.github.io/research");
-    that.echo();
     that.echo("Access with desktop for more!");
     that.echo();
   },
