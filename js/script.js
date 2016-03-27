@@ -182,13 +182,13 @@ var App = {
     this.echo();
   },
   blog: function(){
-    window.location.href = "http://tnt2113.github.io/blog";
+    window.location.href = "./blog";
   },
   courses: function(){
-    window.location.href = "http://tnt2113.github.io/courses";
+    window.location.href = "./courses";
   },  
   code: function(){
-    window.location.href = "http://tnt2113.github.io/code";
+    window.location.href = "./code";
   },   
   cls: function(){
     this.clear();
