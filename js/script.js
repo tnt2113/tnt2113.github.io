@@ -142,8 +142,8 @@ var App = {
     this.echo("|");
     this.echo("|  [[g;#B2D100;]Statistical Computing] ");
     this.echo("|  " + commandText('Stata') + "                  ##[[g;#5BD100;]##################################################] ##");
+    this.echo("|  " + commandText('Python') + "                 ##[[g;#5BD100;]##############################################]     ##");
     this.echo("|  " + commandText('Mata') + "                   ##[[g;#5BD100;]##############################################]     ##");    
-    this.echo("|  " + commandText('Python') + "                 ##[[g;#5BD100;]############################################]       ##");
     this.echo("|  " + commandText('R') + "                      ##[[g;#B2D100;]#######################################]            ##"); 
     this.echo("|  " + commandText('bash') + "                   ##[[g;#B2D100;]#######################################]            ##");            
     this.echo("|  " + commandText('C++') + "                    ##[[g;#D13F00;]#######################]                            ##");  
@@ -189,6 +189,9 @@ var App = {
   },  
   code: function(){
     window.location.href = "./code";
+  },   
+  research: function(){
+    window.location.href = "./research";
   },   
   cls: function(){
     this.clear();
