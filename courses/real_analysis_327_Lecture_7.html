@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+ <!--      <link href = "../css/style.css" rel="stylesheet" type = "text/css"/>-->
+
+<script   src="https://code.jquery.com/jquery-2.2.1.min.js"   integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="   crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function($) {
+  
+    var navbar = $('#navbar-main'),
+        distance = navbar.offset().top,
+        $window = $(window);
+
+    $window.scroll(function() {
+        if ($window.scrollTop() >= distance) {
+            navbar.removeClass('navbar-fixed-top').addClass('navbar-fixed-top');
+            $("body").css("padding-top", "70px");
+        } else {
+            navbar.removeClass('navbar-fixed-top');
+            $("body").css("padding-top", "0px");
+        }
+    });
+});
+</script>
+<title>Tara</title>
+</head>
+  <body>
+
+<div class="container">
+  <header class="page-header">
+    <h1>tnt2113.github.io</h1>
+  </header>
+</div>
+
+<nav id="navbar-main" class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tara</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../">Home</a></li>
+        <li><a href="../about">About</a></li>
+        <li><a href="../research">Research</a></li>
+        <li><a href="../code">Code</a></li>
+        <li><a href="../courses">Courses</a></li>
+        <li><a href="../blog">Blog</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<main class="container">
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+
+<body>
+<h1>Lecture 7</h1>
+<h3>Convergence of sequences</h3>
+<p><b>Definition:</b> a sequence is a function, $f: \mathbb{N} \rightarrow \mathbb{R}, n \rightarrow f(n)$</p>
+<p><b>Definition:</b> The sequence $\big\{{a_{n}}\big\}_{n}$ <b>converges</b> if $\exists a \in \mathbb{R}$ such that $\forall \epsilon > 0, \exists N \in \mathbb{N}, n \geq N \implies |a_{n} - a| < \epsilon$. We also write: $\lim_{x\to\infty} a_{n} = a$</p>
+<p>The Comparison Lemma: let two sequences, $a_{n}, b_{n}, a,b \in \mathbb{R}$. Suppose $\lim_{n\to\infty} a_{n} = a$ and $\exists c > 0, N_{0} \in \mathbb{N}, \forall n \geq N_{0}, |b_{n}-b| \leq c |a_{n} - a|$. Then $\lim_{n\to\infty} b_{n} = b$</p>
+
+<h3>Algebraic Limit Rules</h3>
+<p>Suppose $\lim_{n\to\infty} a_{n} = a$ and $\lim_{n\to\infty} b_{n} = b$ for two sequences $\big\{{a_{n}}\big\}_{n}$ and $\big\{{b_{n}}\big\}_{n}$. Then:</p>
+<ol>
+  <li>$\lim_{n\to\infty} (a_{n} + b_{n}) = a + b = \lim_{n\to\infty} a_{n} + \lim_{n\to\infty}  b_{n})$</li>
+  <li>$\lim_{n\to\infty} (a_{n} \cdot b_{n}) = a \cdot b = \lim_{n\to\infty} a_{n} \cdot \lim_{n\to\infty}  b_{n})$</li>
+</ol>
+<p>If in addition $b_{n} \neq 0, \forall n \in \mathbb{N}$ and  $b \neq 0$ then:</p>
+<ol>
+  <li>$\big\{{\frac{1}{b_{n}}\big\}_{n}$ converges and $\lim_{n\to\infty} \frac{1}{b_{n}} =\frac{1}{b} $  </li>
+  <li>$\big\{{\frac{a_{n}}{b_{n}}\big\}_{n}$ converges and $\lim_{n\to\infty} \frac{{a_{n}}{b_{n}} =\frac{a}{b} $  </li>
+</ol>
+</main>
+</body>
+</html>
