@@ -57,9 +57,9 @@ var selectableCountries = [];
 //	now they are just strings of categories
 //	Category Name : Category Code
 var weaponLookup = {
-	'Military Weapons' 		: 'mil',
-	'Civilian Weapons'		: 'civ',
-	'Ammunition'			: 'ammo',
+	'HIV/AIDS' 			: 'mil',
+	'Children'			: 'civ',
+	'Maternal'			: 'ammo',
 };
 
 //	a list of the reverse for easy lookup
@@ -292,7 +292,7 @@ function initScene() {
 
 	buildGUI();
 
-	selectVisualization( timeBins, '2010', ['UNITED STATES'], ['Military Weapons','Civilian Weapons', 'Ammunition'], ['Military Weapons','Civilian Weapons', 'Ammunition'] );					
+	selectVisualization( timeBins, '2010', ['UNITED STATES'], ['HIV/AIDS','Children', 'Maternal'], ['HIV/AIDS','Children', 'Maternal']);					
 
 		// test for highlighting specific countries
 	// highlightCountry( ["United States", "Switzerland", "China"] );

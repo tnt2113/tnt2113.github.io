@@ -641,7 +641,7 @@ var d3Graphs = {
                 var textLabel = importLabel.append('text').text(function(d) {
                     return reverseWeaponLookup[d.type].split(' ')[0].toUpperCase();
                 }).attr('text-anchor','end').attr('y',8).attr('class',function(d) { return 'import '+d.type});
-                var weaponLabel  =importLabel.append('text').text('WEAPONS').attr('text-anchor','end').attr('y',21)
+                var weaponLabel  =importLabel.append('text').attr('text-anchor','end').attr('y',21)
                     .attr('class',function(d) { return'import '+d.type} );
                 labelHeight = fontSizeInterpolater((data.amount-minImExAmount)/(maxImExAmount-minImExAmount));
                 labelBGYPos = -labelHeight - 7;
@@ -730,7 +730,7 @@ var d3Graphs = {
                 var textLabel = exportLabel.append('text').text(function(d) {
                     return reverseWeaponLookup[d.type].split(' ')[0].toUpperCase();
                 }).attr('text-anchor','start').attr('y',8).attr('class',function(d) { return 'export '+d.type});
-                var weaponLabel  =exportLabel.append('text').text('WEAPONS').attr('text-anchor','start').attr('y',21)
+                var weaponLabel  =exportLabel.append('text').attr('text-anchor','start').attr('y',21)
                     .attr('class',function(d) { return'export '+d.type} );
                 labelHeight = fontSizeInterpolater((data.amount-minImExAmount)/(maxImExAmount-minImExAmount));
                 labelBGYPos = -labelHeight - 7;
