@@ -113,7 +113,7 @@ var App = {
     this.echo("|");
     this.echo("|  " + commandText('Education') + "                            ");
     this.echo("|    • MSc in Stats    : Stanford (in progress)");
-    this.echo("|    • GNM coursework  : University of Washinton");
+    this.echo("|    • GNM coursework  : University of Washington");
     this.echo("|    • BA in Econ-Math : Columbia");
     this.echo();
   },
