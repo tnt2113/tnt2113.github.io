@@ -100,7 +100,7 @@ var App = {
   work: function(){
     this.echo();
     this.echo("|  " + commandText('Institute for Health Metrics and Evaluation') + "                            ");
-    this.echo("|    • Researcher, Health Expenditure and Financial Forecasting (Seattle, WA; September 2015 – Present)");
+    this.echo("|    • Researcher, Health Expenditure and Financial Forecasting (Seattle, WA; September 2015 – July 2016)");
     this.echo("|    • Practicum Student, University Teaching Hospital, Infectuous Disease Unit (Lusaka, Zambia; July 2015 – August 2015)");
     this.echo("|    • Post-Bachelor Fellow, Health Financing (Seattle, WA; September 2013 – September 2015)");
     this.echo("|");
@@ -110,10 +110,11 @@ var App = {
     this.echo("|");
     this.echo("|  " + commandText('Department of Interior') + "                            ");
     this.echo("|    • Summer Fellow, Office of Public Engagement (Washington, DC; June – August 2010)");
+    this.echo("|");
     this.echo("|  " + commandText('Education') + "                            ");
-    this.echo("|    • MSc in Stats    | Stanford (in progress)");
-    this.echo("|    • GNM coursework  | University of Washinton");
-    this.echo("|    • BA in Econ-Math | Columbia");
+    this.echo("|    • MSc in Stats    : Stanford (in progress)");
+    this.echo("|    • GNM coursework  : University of Washinton");
+    this.echo("|    • BA in Econ-Math : Columbia");
     this.echo();
   },
   whoami: function(){
