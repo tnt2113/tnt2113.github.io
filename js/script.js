@@ -111,9 +111,9 @@ var App = {
     this.echo("|  " + commandText('Department of Interior') + "                            ");
     this.echo("|    • Summer Fellow, Office of Public Engagement (Washington, DC; June – August 2010)");
     this.echo("|  " + commandText('Education') + "                            ");
-    this.echo("MSc in Stats (in progress) | Stanford");
-    this.echo("G.N.M. coursework | University of Washinton");
-    this.echo("B.A in Econ-Math | Columbia");
+    this.echo("|    • MSc in Stats    | Stanford (in progress)");
+    this.echo("|    • GNM coursework  | University of Washinton");
+    this.echo("|    • BA in Econ-Math | Columbia");
     this.echo();
   },
   whoami: function(){
