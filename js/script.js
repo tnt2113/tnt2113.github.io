@@ -112,7 +112,7 @@ var App = {
     this.echo("|    • Summer Fellow, Office of Public Engagement (Washington, DC; June – August 2010)");
     this.echo("|");
     this.echo("|  " + commandText('Education') + "                            ");
-    this.echo("|    • MSc in Stats    : Stanford (in progress)");
+    this.echo("|    • MS in Stats     : Stanford (in progress)");
     this.echo("|    • GNM coursework  : University of Washington");
     this.echo("|    • BA in Econ-Math : Columbia");
     this.echo();
