@@ -13,7 +13,7 @@ var App = {
     var greetText = 
       "################################################################################################\n"+
       "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
-      "|\t\tWelcome, You have reached " + commandText('Tara') + " - statistical programmer and coffee aficionado.\t\t|\n"+
+      "|\t\tWelcome, You have reached " + commandText('Tara') + " - graduate student and coffee aficionado.\t\t|\n"+
       "|\t\tPlease type " +commandText('ls')+" or " +commandText('help')+ " followed by the ENTER key to access a list of commands.\t\t|\n"+
       "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
       "################################################################################################\n";
@@ -101,7 +101,7 @@ var App = {
     this.echo();
     this.echo("|  " + commandText('Stanford University') + "                            ");
     this.echo("|    • Gerhard Casper Fellow (Palo Alto, CA; June 2018 – Present)");
-    this.echo("|    • Research AssistantSocio-Economic Determinants of Obesity (Palo Alto, CA; September 2017 – June 2018)");
+    this.echo("|    • Research Assistant, Socio-Economic Determinants of Obesity (Palo Alto, CA; September 2017 – June 2018)");
     this.echo("|");    
     this.echo("|  " + commandText('Council on Foreign Relations') + "                            ");
     this.echo("|    • Independent Consultant, Health Systems and Disease Forecasting (Palo Alto, CA; November 2016 – June 2020)");
@@ -113,10 +113,10 @@ var App = {
     this.echo("|");
     this.echo("|  " + commandText('Center for Global Development') + "                            ");
     this.echo("|    • Independent Consultant, Results-Based Financing (New York, NY; November 2012 – April 2013)");
-    this.echo("|    • Research Intern, Cash on Delivery Aid Program (Washington, DC; June – August 2011)");
+    this.echo("|    • Research Intern, Cash on Delivery Aid Program (Washington, DC; June 2011 – August 2011)");
     this.echo("|");
     this.echo("|  " + commandText('Department of Interior') + "                            ");
-    this.echo("|    • Summer Fellow, Office of Public Engagement (Washington, DC; June – August 2010)");
+    this.echo("|    • Summer Fellow, Office of Public Engagement (Washington, DC; June 2010 – August 2010)");
     this.echo("|");
     this.echo("|  " + commandText('Education') + "                            ");
     this.echo("|    • Ph.D in Health Economics : Stanford University");
