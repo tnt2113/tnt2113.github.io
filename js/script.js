@@ -135,7 +135,7 @@ var App = {
     this.echo("|  About:        I am a Health Policy PhD candidate specializing in Health Economics at " + commandText('Stanford University') +".");
     this.echo("|                Before Stanford, I worked at the University of Washington's Institute for Health Metrics and Evaluation."); 
     this.echo("|                I like reproducible research and making complex statistical concepts easy to understand."); 
-    this.echo("|                Other interests include coffee, travel, book clubs, board games, rock climbing, and disco music.");
+    this.echo("|                Other interests include coffee, travel, board games, rock climbing, and disco music.");
     this.echo("|");
     this.echo("|  More here:   http://tnt2113.github.io/about");
     this.echo();
