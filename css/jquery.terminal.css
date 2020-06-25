@@ -82,6 +82,7 @@
     display: block;
     line-height: 14px;
     height: auto;
+    overflow: auto;
 }
 .cmd .prompt {
     float: left;
@@ -141,3 +142,4 @@
 .terminal a:hover {
     color: red;
 }
+
