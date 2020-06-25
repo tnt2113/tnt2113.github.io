@@ -8,7 +8,6 @@
 .terminal .terminal-output .format, .cmd .format,
 .cmd .prompt, .cmd .prompt div, .terminal .terminal-output div div{
     display: inline-block;
-    overfill:auto;
 }
 .cmd .clipboard {
     position: absolute;
@@ -93,6 +92,7 @@
     background-color: #000;
     font-size: 13.5px;
     line-height: 14px;
+    overfill:auto
 }
 .terminal-output > div {
     /*padding-top: 3px;*/
