@@ -8,8 +8,12 @@
 .terminal .terminal-output .format, .cmd .format,
 .cmd .prompt, .cmd .prompt div, .terminal .terminal-output div div{
     display: inline-block;
+}
+
+.terminal-output{
     overflow: auto;
 }
+
 .cmd .clipboard {
     position: absolute;
     bottom: 0;
@@ -83,7 +87,6 @@
     display: block;
     line-height: 14px;
     height: auto;
-    overflow: auto;
 }
 .cmd .prompt {
     float: left;
