@@ -10,10 +10,6 @@
     display: inline-block;
 }
 
-.terminal-output{
-    overflow: auto;
-}
-
 .cmd .clipboard {
     position: absolute;
     bottom: 0;
