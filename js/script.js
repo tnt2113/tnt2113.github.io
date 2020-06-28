@@ -58,12 +58,12 @@ var App = {
   menu: function(){
     this.echo();
     this.echo("|  " + commandText("about") + "              - About Me");
+    this.echo("|  " + commandText("research") + "           - Research projects");
     this.echo("|  " + commandText("skills") + "             - Technical Proficiencies");    
     this.echo("|  " + commandText("work") + "               - Professional Experience");
-    this.echo("|  " + commandText("projects") + "           - Research projects");
     this.echo("|  " + commandText("courses") + "            - Course notes");
-    this.echo("|");
     this.echo("|  " + commandText("online") + "             - Find me on the internet");
+    this.echo("|  " + commandText("credits") + "            - How I made this website");
    // this.echo("|");
    //  this.echo("|  " + commandText("all") + "                - [[b;#00DE12;]Run all commands (recommended)]");
     this.echo();
@@ -101,6 +101,7 @@ var App = {
     this.echo();
     this.echo("|  " + commandText('Stanford University') + "                            ");
     this.echo("|    • Gerhard Casper Fellow (Palo Alto, CA; June 2018 – Present)");
+    this.echo("|    • Teaching Assistant, Outcomes Analysis (Palo Alto, CA; April 2020 – June 2020)");
     this.echo("|    • Research Assistant, Socio-Economic Determinants of Obesity (Palo Alto, CA; September 2017 – June 2018)");
     this.echo("|");    
     this.echo("|  " + commandText('Council on Foreign Relations') + "                            ");
@@ -132,10 +133,10 @@ var App = {
     this.echo();
     this.echo("|  Name:         " + commandText('Tara Templin'));
     this.echo("|");
-    this.echo("|  About:        I am a Health Policy PhD candidate specializing in Health Economics at " + commandText('Stanford University') +".");
-    this.echo("|                Before Stanford, I worked at the University of Washington's Institute for Health Metrics and Evaluation."); 
-    this.echo("|                I like reproducible research and making complex statistical concepts easy to understand."); 
-    this.echo("|                Other interests include coffee, travel, board games, rock climbing, and disco music.");
+    this.echo("|  About:        I am a " + commandText('Health Policy PhD candidate') + " specializing in Health Economics at " + commandText('Stanford University') +".");
+    this.echo("|                I also obtained my Statistics M.S. from Stanford and my B.A. in Economics and Mathematics from Columbia. Before Stanford, I worked at the ");
+    this.echo("|                University of Washington's Institute for Health Metrics and Evaluation. I like reproducible research and making complex statistical "); 
+    this.echo("|                concepts easy to understand. Other interests include coffee, travel, board games, rock climbing, and disco music.");
     this.echo("|");
     this.echo("|  More here:   http://tnt2113.github.io/about");
     this.echo();
@@ -264,14 +265,16 @@ var App = {
   mobile: function(){
     that.clear();
     that.echo("[[g;#5BD100;]TARA TEMPLIN]");
-    that.echo();
-    that.echo("Ph.D. candidate in Health Econ");
+    that.echo("Ph.D. candidate in Health Policy");
+    that.echo();   
+    that.echo("[[g;#B2D100;]ABOUT]");    
     that.echo("http://tnt2113.github.io/about");  
     that.echo();   
-    that.echo("[[g;#D13F00;]EXPERIENCE]");
+    that.echo("[[g;#B2D100;]RESEARCH]");
     that.echo("http://tnt2113.github.io/research");
     that.echo();
-    that.echo("Access with desktop for more!");
+    that.echo("[[g;#B2D100;]TEACHING]");
+    that.echo("http://tnt2113.github.io/courses");
     that.echo();
   },
 }
