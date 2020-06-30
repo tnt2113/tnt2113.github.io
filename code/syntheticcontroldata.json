@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Autocracies",
+    "show": true,
+    "color": "#720c26",
+    "currentPopulation": 9883640,
+    "history": [
+      {"year":	-9	,"population":	0.966},
+      {"year":	-8	,"population":	0.972},
+      {"year":	-7	,"population":	0.976},
+      {"year":	-6	,"population":	0.981},
+      {"year":	-5	,"population":	0.983	},
+      {"year":	-4	,"population":	0.988},
+      {"year":	-3	,"population":	0.993},
+      {"year":	-2	,"population":	0.997},
+      {"year":	-1	,"population":	1.000	},
+      {"year":	1	,"population":	1.003	},
+      {"year":	2	,"population":	1.004},
+      {"year":	3	,"population":	1.005},
+      {"year":	4	,"population":	1.010},
+      {"year":	5	,"population":	1.010	},
+      {"year":	6	,"population":	1.015},
+      {"year":	7	,"population":	1.018},
+      {"year":	8,"population":	1.022},
+      {"year":	9	,"population":	1.023}
+    ]
+  },
+  {
+    "name": "Control countries",
+    "show": true,
+    "color": "#04284A",
+    "currentPopulation": 25145561,
+    "history": [
+      {"year":	-9	,"population":	0.969	},
+      {"year":	-8	,"population":	0.972},
+      {"year":	-7	,"population":	0.974},
+      {"year":	-6	,"population":	0.979},
+      {"year":	-5	,"population":	0.983},
+      {"year":	-4	,"population":	0.986},
+      {"year":	-3	,"population":	0.990},
+      {"year":	-2	,"population":	0.996},
+      {"year":	-1	,"population":	1.000},
+      {"year":	1	,"population":	1.005},
+      {"year":	2	,"population":	1.009	},
+      {"year":	3	,"population":	1.014	},
+      {"year":	4	,"population":	1.018},
+      {"year":	5	,"population":	1.025},
+      {"year":	6	,"population":	1.031},
+      {"year":	7	,"population":	1.035},
+      {"year":	8	,"population":	1.039},
+      {"year":	9,"population":	1.043}
+    ]
+  }
+]
