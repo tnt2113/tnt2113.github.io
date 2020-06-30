@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<link rel="stylesheet" type="text/css" href="/css/stylebubble.css">
+</head>
+<div id="titletxt" class="titletext">
+  Democracy and Cardiovascular Deaths: By Regime Turnover
+</div>
+
+<!-- Create a div where the graph will take place -->
+<div id="chartId"></div>
+<div id="sourcetxt" class="sourcetext">
+  Sources: Authors' calculation from Varieties of Democracy; Global Burden of Disease.
+</div>
+<div class="logo"><img src="CFR_Signature_Brown.svg",height="30", width="62"></div>
+
+
+
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>
+
+<script>
+var chartdata = [{"location":"Afghanistan","local_id":"AFG","year":1995,"cardio_ch":-3.5193,"ghes_ch":8,"dem_ch":1.0973,"lead_pop":32526562,"regtype4":1,"maxalt0B":2,"yhat":-3.131},{"location":"Albania","local_id":"ALB","year":1995,"cardio_ch":-0.3184,"ghes_ch":274,"dem_ch":4.775,"lead_pop":2896679,"regtype4":2,"maxalt0B":2,"yhat":-5.3634},{"location":"Algeria","local_id":"DZA","year":1995,"cardio_ch":-4.7365,"ghes_ch":464,"dem_ch":1.2669,"lead_pop":39666520,"regtype4":1,"maxalt0B":1,"yhat":-4.2289},{"location":"Angola","local_id":"AGO","year":1995,"cardio_ch":-6.6186,"ghes_ch":16,"dem_ch":0.3618,"lead_pop":25021976,"regtype4":0,"maxalt0B":-1,"yhat":-4.5747},{"location":"Argentina","local_id":"ARG","year":1995,"cardio_ch":-7.0244,"ghes_ch":473,"dem_ch":10.3167,"lead_pop":43416756,"regtype4":2,"maxalt0B":2,"yhat":-8.7272},{"location":"Armenia","local_id":"ARM","year":1995,"cardio_ch":-7.2112,"ghes_ch":100,"dem_ch":1.6913,"lead_pop":3017712,"regtype4":1,"maxalt0B":0,"yhat":-4.6911},{"location":"Australia","local_id":"AUS","year":1995,"cardio_ch":-13.7849,"ghes_ch":1668,"dem_ch":7.1363,"lead_pop":23968976,"regtype4":3,"maxalt0B":2,"yhat":-6.7967},{"location":"Austria","local_id":"AUT","year":1995,"cardio_ch":-11.8137,"ghes_ch":1254,"dem_ch":8.3738,"lead_pop":8544586,"regtype4":3,"maxalt0B":2,"yhat":-7.5478},{"location":"Azerbaijan","local_id":"AZE","year":1995,"cardio_ch":-1.7095,"ghes_ch":190,"dem_ch":0.0819,"lead_pop":9753968,"regtype4":1,"maxalt0B":0,"yhat":-4.9363},{"location":"Bangladesh","local_id":"BGD","year":1995,"cardio_ch":2.463,"ghes_ch":6,"dem_ch":3.7727,"lead_pop":160995648,"regtype4":2,"maxalt0B":2,"yhat":-4.755},{"location":"Barbados","local_id":"BRB","year":1995,"cardio_ch":-7.7346,"ghes_ch":100,"dem_ch":8.4423,"lead_pop":284216,"regtype4":2,"maxalt0B":1,"yhat":-8.1183},{"location":"Belarus","local_id":"BLR","year":1995,"cardio_ch":-3.0393,"ghes_ch":438,"dem_ch":0.397,"lead_pop":9495824,"regtype4":1,"maxalt0B":0,"yhat":-4.8883},{"location":"Belgium","local_id":"BEL","year":1995,"cardio_ch":-10.8269,"ghes_ch":1694,"dem_ch":9.5994,"lead_pop":11299192,"regtype4":3,"maxalt0B":2,"yhat":-8.2918},{"location":"Benin","local_id":"BEN","year":1995,"cardio_ch":-2.5065,"ghes_ch":0,"dem_ch":8.4011,"lead_pop":10879828,"regtype4":2,"maxalt0B":2,"yhat":-7.5644},{"location":"Bhutan","local_id":"BTN","year":1995,"cardio_ch":-4.4849,"ghes_ch":62,"dem_ch":2.4966,"lead_pop":774830,"regtype4":1,"maxalt0B":2,"yhat":-3.9804},{"location":"Bolivia","local_id":"BOL","year":1995,"cardio_ch":-7.0363,"ghes_ch":212,"dem_ch":9.9192,"lead_pop":10724704,"regtype4":2,"maxalt0B":1,"yhat":-8.9188},{"location":"Bosnia and Herzegovina","local_id":"BIH","year":1995,"cardio_ch":-5.0831,"ghes_ch":739,"dem_ch":8.0144,"lead_pop":3810416,"regtype4":2,"maxalt0B":1,"yhat":-7.8863},{"location":"Botswana","local_id":"BWA","year":1995,"cardio_ch":0.3152,"ghes_ch":72,"dem_ch":7.9045,"lead_pop":2262486,"regtype4":3,"maxalt0B":0,"yhat":-3.7443},{"location":"Brazil","local_id":"BRA","year":1995,"cardio_ch":-9.2975,"ghes_ch":368,"dem_ch":13.0626,"lead_pop":207847536,"regtype4":2,"maxalt0B":1,"yhat":-10.6227},{"location":"Bulgaria","local_id":"BGR","year":1995,"cardio_ch":-5.4074,"ghes_ch":524,"dem_ch":9.8173,"lead_pop":7149788,"regtype4":2,"maxalt0B":2,"yhat":-8.424},{"location":"Burkina Faso","local_id":"BFA","year":1995,"cardio_ch":2.2305,"ghes_ch":19,"dem_ch":4.8981,"lead_pop":18105568,"regtype4":2,"maxalt0B":0,"yhat":-4.2024},{"location":"Myanmar","local_id":"MMR","year":1995,"cardio_ch":-8.1677,"ghes_ch":48,"dem_ch":0.108,"lead_pop":53897156,"regtype4":0,"maxalt0B":-1,"yhat":-4.5399},{"location":"Burundi","local_id":"BDI","year":1995,"cardio_ch":-7.7496,"ghes_ch":2,"dem_ch":1.0693,"lead_pop":11178921,"regtype4":1,"maxalt0B":0,"yhat":-4.7858},{"location":"Cambodia","local_id":"KHM","year":1995,"cardio_ch":-6.6361,"ghes_ch":24,"dem_ch":1.384,"lead_pop":15577899,"regtype4":1,"maxalt0B":1,"yhat":-4.2924},{"location":"Cameroon","local_id":"CMR","year":1995,"cardio_ch":-1.8424,"ghes_ch":3,"dem_ch":0.9561,"lead_pop":23344180,"regtype4":1,"maxalt0B":0,"yhat":-4.8031},{"location":"Canada","local_id":"CAN","year":1995,"cardio_ch":-11.7149,"ghes_ch":1446,"dem_ch":7.5375,"lead_pop":35939928,"regtype4":3,"maxalt0B":2,"yhat":-7.0402},{"location":"Cape Verde","local_id":"CPV","year":1995,"cardio_ch":-3.0503,"ghes_ch":72,"dem_ch":11.9388,"lead_pop":520502,"regtype4":3,"maxalt0B":1,"yhat":-10.0135},{"location":"Central African Republic","local_id":"CAF","year":1995,"cardio_ch":-1.4615,"ghes_ch":-9,"dem_ch":0.889,"lead_pop":4900275,"regtype4":1,"maxalt0B":2,"yhat":-3.0046},{"location":"Chad","local_id":"TCD","year":1995,"cardio_ch":0.394,"ghes_ch":4,"dem_ch":0.564,"lead_pop":14037472,"regtype4":1,"maxalt0B":1,"yhat":-3.8479},{"location":"Chile","local_id":"CHL","year":1995,"cardio_ch":-9.2025,"ghes_ch":756,"dem_ch":12.8298,"lead_pop":17948140,"regtype4":3,"maxalt0B":2,"yhat":-10.2527},{"location":"China","local_id":"CHN","year":1995,"cardio_ch":-1.8562,"ghes_ch":409,"dem_ch":0,"lead_pop":1376048896,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Colombia","local_id":"COL","year":1995,"cardio_ch":-13.081,"ghes_ch":148,"dem_ch":5.2211,"lead_pop":48228704,"regtype4":2,"maxalt0B":2,"yhat":-5.6341},{"location":"Comoros","local_id":"COM","year":1995,"cardio_ch":-6.9195,"ghes_ch":-4,"dem_ch":3.8165,"lead_pop":788475,"regtype4":1,"maxalt0B":2,"yhat":-4.7815},{"location":"Costa Rica","local_id":"CRI","year":1995,"cardio_ch":-9.6868,"ghes_ch":620,"dem_ch":10.4307,"lead_pop":4807850,"regtype4":3,"maxalt0B":2,"yhat":-8.7964},{"location":"Croatia","local_id":"HRV","year":1995,"cardio_ch":-6.49,"ghes_ch":483,"dem_ch":10.9778,"lead_pop":4240316,"regtype4":2,"maxalt0B":2,"yhat":-9.1285},{"location":"Cuba","local_id":"CUB","year":1995,"cardio_ch":-7.8806,"ghes_ch":1615,"dem_ch":-0.3336,"lead_pop":11389561,"regtype4":0,"maxalt0B":-1,"yhat":-4.4792},{"location":"Cyprus","local_id":"CYP","year":1995,"cardio_ch":-10.7321,"ghes_ch":361,"dem_ch":10.9208,"lead_pop":1165301,"regtype4":3,"maxalt0B":2,"yhat":-9.0939},{"location":"Czech Republic","local_id":"CZE","year":1995,"cardio_ch":-10.7006,"ghes_ch":927,"dem_ch":13.1575,"lead_pop":10543185,"regtype4":3,"maxalt0B":2,"yhat":-10.4516},{"location":"Democratic Republic of the Congo","local_id":"COD","year":1995,"cardio_ch":-1.6994,"ghes_ch":4,"dem_ch":0.7188,"lead_pop":77266816,"regtype4":0,"maxalt0B":0,"yhat":-4.8392},{"location":"Vietnam","local_id":"VNM","year":1995,"cardio_ch":-3.9172,"ghes_ch":101,"dem_ch":-0.0107,"lead_pop":93447600,"regtype4":0,"maxalt0B":-1,"yhat":-4.5235},{"location":"Denmark","local_id":"DNK","year":1995,"cardio_ch":-15.8354,"ghes_ch":1762,"dem_ch":7.234,"lead_pop":5669081,"regtype4":3,"maxalt0B":2,"yhat":-6.856},{"location":"Djibouti","local_id":"DJI","year":1995,"cardio_ch":-5.2041,"ghes_ch":24,"dem_ch":0.5234,"lead_pop":887861,"regtype4":1,"maxalt0B":0,"yhat":-4.869},{"location":"Dominican Republic","local_id":"DOM","year":1995,"cardio_ch":3.8578,"ghes_ch":342,"dem_ch":7.8941,"lead_pop":10528392,"regtype4":2,"maxalt0B":2,"yhat":-7.2566},{"location":"Ecuador","local_id":"ECU","year":1995,"cardio_ch":-5.3676,"ghes_ch":316,"dem_ch":7.7752,"lead_pop":16144364,"regtype4":2,"maxalt0B":2,"yhat":-7.1845},{"location":"Egypt","local_id":"EGY","year":1995,"cardio_ch":-1.0935,"ghes_ch":44,"dem_ch":0.1151,"lead_pop":91508080,"regtype4":1,"maxalt0B":1,"yhat":-3.6046},{"location":"El Salvador","local_id":"SLV","year":1995,"cardio_ch":-4.1238,"ghes_ch":253,"dem_ch":6.4555,"lead_pop":6126584,"regtype4":2,"maxalt0B":0,"yhat":-3.9651},{"location":"Equatorial Guinea","local_id":"GNQ","year":1995,"cardio_ch":-14.3191,"ghes_ch":129,"dem_ch":0.0474,"lead_pop":845061,"regtype4":1,"maxalt0B":0,"yhat":-4.9415},{"location":"Eritrea","local_id":"ERI","year":1995,"cardio_ch":-5.5253,"ghes_ch":-15,"dem_ch":0,"lead_pop":5227790,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Estonia","local_id":"EST","year":1995,"cardio_ch":-12.344,"ghes_ch":748,"dem_ch":13.6381,"lead_pop":1312558,"regtype4":3,"maxalt0B":2,"yhat":-10.7433},{"location":"Ethiopia","local_id":"ETH","year":1995,"cardio_ch":-11.8999,"ghes_ch":6,"dem_ch":0.3844,"lead_pop":99390752,"regtype4":1,"maxalt0B":1,"yhat":-3.7506},{"location":"Fiji","local_id":"FJI","year":1995,"cardio_ch":-2.5148,"ghes_ch":52,"dem_ch":2.3716,"lead_pop":892145,"regtype4":1,"maxalt0B":1,"yhat":-4.8277},{"location":"Finland","local_id":"FIN","year":1995,"cardio_ch":-11.1346,"ghes_ch":1561,"dem_ch":8.5575,"lead_pop":5503456,"regtype4":3,"maxalt0B":2,"yhat":-7.6594},{"location":"France","local_id":"FRA","year":1995,"cardio_ch":-12.0164,"ghes_ch":1160,"dem_ch":9.2256,"lead_pop":64395344,"regtype4":3,"maxalt0B":1,"yhat":-8.5428},{"location":"Gabon","local_id":"GAB","year":1995,"cardio_ch":-5.1563,"ghes_ch":120,"dem_ch":1.6076,"lead_pop":1725293,"regtype4":1,"maxalt0B":0,"yhat":-4.7038},{"location":"The Gambia","local_id":"GMB","year":1995,"cardio_ch":0.9929,"ghes_ch":-10,"dem_ch":-0.4775,"lead_pop":1990924,"regtype4":1,"maxalt0B":1,"yhat":-3.2834},{"location":"Georgia","local_id":"GEO","year":1995,"cardio_ch":-2.0936,"ghes_ch":255,"dem_ch":5.1347,"lead_pop":3999814,"regtype4":2,"maxalt0B":2,"yhat":-5.5817},{"location":"Germany","local_id":"DEU","year":1995,"cardio_ch":-10.11,"ghes_ch":1965,"dem_ch":9.5629,"lead_pop":80688544,"regtype4":3,"maxalt0B":2,"yhat":-8.2696},{"location":"Ghana","local_id":"GHA","year":1995,"cardio_ch":1.145,"ghes_ch":60,"dem_ch":9.4962,"lead_pop":27409892,"regtype4":2,"maxalt0B":2,"yhat":-8.2291},{"location":"Greece","local_id":"GRC","year":1995,"cardio_ch":-7.9084,"ghes_ch":423,"dem_ch":11.2816,"lead_pop":10954617,"regtype4":3,"maxalt0B":2,"yhat":-9.3129},{"location":"Guatemala","local_id":"GTM","year":1995,"cardio_ch":-7.0429,"ghes_ch":63,"dem_ch":5.9332,"lead_pop":16342897,"regtype4":2,"maxalt0B":2,"yhat":-6.0664},{"location":"Guinea","local_id":"GIN","year":1995,"cardio_ch":2.2999,"ghes_ch":6,"dem_ch":0.9602,"lead_pop":12608590,"regtype4":1,"maxalt0B":0,"yhat":-4.8025},{"location":"Guinea-Bissau","local_id":"GNB","year":1995,"cardio_ch":-2.299,"ghes_ch":2,"dem_ch":3.343,"lead_pop":1844324,"regtype4":1,"maxalt0B":1,"yhat":-5.3542},{"location":"Guyana","local_id":"GUY","year":1995,"cardio_ch":-4.1175,"ghes_ch":47,"dem_ch":5.2673,"lead_pop":767084,"regtype4":2,"maxalt0B":1,"yhat":-6.3973},{"location":"Haiti","local_id":"HTI","year":1995,"cardio_ch":-4.1845,"ghes_ch":-7,"dem_ch":2.91,"lead_pop":10711067,"regtype4":1,"maxalt0B":0,"yhat":-4.5054},{"location":"Honduras","local_id":"HND","year":1995,"cardio_ch":-2.4602,"ghes_ch":77,"dem_ch":4.916,"lead_pop":8075060,"regtype4":2,"maxalt0B":2,"yhat":-5.4489},{"location":"Hungary","local_id":"HUN","year":1995,"cardio_ch":-7.1631,"ghes_ch":375,"dem_ch":11.5056,"lead_pop":9855023,"regtype4":3,"maxalt0B":2,"yhat":-9.4488},{"location":"Iceland","local_id":"ISL","year":1995,"cardio_ch":-11.6938,"ghes_ch":1362,"dem_ch":7.079,"lead_pop":329424,"regtype4":3,"maxalt0B":1,"yhat":-7.3793},{"location":"India","local_id":"IND","year":1995,"cardio_ch":-0.781,"ghes_ch":40,"dem_ch":6.7162,"lead_pop":1311050496,"regtype4":2,"maxalt0B":2,"yhat":-6.5417},{"location":"Indonesia","local_id":"IDN","year":1995,"cardio_ch":1.6556,"ghes_ch":94,"dem_ch":7.8609,"lead_pop":257563808,"regtype4":2,"maxalt0B":2,"yhat":-7.2365},{"location":"Iran","local_id":"IRN","year":1995,"cardio_ch":-4.8219,"ghes_ch":534,"dem_ch":0.1964,"lead_pop":79109272,"regtype4":1,"maxalt0B":2,"yhat":-2.5842},{"location":"Iraq","local_id":"IRQ","year":1995,"cardio_ch":-15.4473,"ghes_ch":79,"dem_ch":2.2393,"lead_pop":36423396,"regtype4":1,"maxalt0B":1,"yhat":-4.756},{"location":"Ireland","local_id":"IRL","year":1995,"cardio_ch":-14.9579,"ghes_ch":2470,"dem_ch":8.1552,"lead_pop":4688464,"regtype4":3,"maxalt0B":2,"yhat":-7.4152},{"location":"Israel","local_id":"ISR","year":1995,"cardio_ch":-16.7462,"ghes_ch":378,"dem_ch":7.1838,"lead_pop":8064036,"regtype4":3,"maxalt0B":2,"yhat":-6.8255},{"location":"Italy","local_id":"ITA","year":1995,"cardio_ch":-10.4616,"ghes_ch":725,"dem_ch":9.196,"lead_pop":59797684,"regtype4":3,"maxalt0B":2,"yhat":-8.0469},{"location":"Cote d'Ivoire","local_id":"CIV","year":1995,"cardio_ch":-2.5919,"ghes_ch":12,"dem_ch":3.5141,"lead_pop":22701556,"regtype4":1,"maxalt0B":1,"yhat":-5.447},{"location":"Jamaica","local_id":"JAM","year":1995,"cardio_ch":-4.605,"ghes_ch":75,"dem_ch":9.2815,"lead_pop":2793335,"regtype4":2,"maxalt0B":1,"yhat":-8.5732},{"location":"Japan","local_id":"JPN","year":1995,"cardio_ch":-12.7846,"ghes_ch":2169,"dem_ch":9.0485,"lead_pop":126573480,"regtype4":3,"maxalt0B":2,"yhat":-7.9574},{"location":"Jordan","local_id":"JOR","year":1995,"cardio_ch":-9.4282,"ghes_ch":-29,"dem_ch":-0.001,"lead_pop":7594547,"regtype4":0,"maxalt0B":-1,"yhat":-4.5249},{"location":"Kazakhstan","local_id":"KAZ","year":1995,"cardio_ch":-4.9108,"ghes_ch":230,"dem_ch":0.5172,"lead_pop":17625226,"regtype4":1,"maxalt0B":0,"yhat":-4.8699},{"location":"Kenya","local_id":"KEN","year":1995,"cardio_ch":-1.8521,"ghes_ch":13,"dem_ch":2.8134,"lead_pop":46050304,"regtype4":1,"maxalt0B":2,"yhat":-4.1727},{"location":"Kuwait","local_id":"KWT","year":1995,"cardio_ch":-8.3361,"ghes_ch":-360,"dem_ch":0.4658,"lead_pop":3892116,"regtype4":0,"maxalt0B":-1,"yhat":-4.589},{"location":"Kyrgyzstan","local_id":"KGZ","year":1995,"cardio_ch":-2.2202,"ghes_ch":42,"dem_ch":1.726,"lead_pop":5939962,"regtype4":1,"maxalt0B":2,"yhat":-3.5126},{"location":"Laos","local_id":"LAO","year":1995,"cardio_ch":-6.7551,"ghes_ch":13,"dem_ch":-0.0781,"lead_pop":6802022,"regtype4":0,"maxalt0B":-1,"yhat":-4.5143},{"location":"Latvia","local_id":"LVA","year":1995,"cardio_ch":-8.1295,"ghes_ch":553,"dem_ch":12.2092,"lead_pop":1970503,"regtype4":2,"maxalt0B":2,"yhat":-9.8759},{"location":"Lebanon","local_id":"LBN","year":1995,"cardio_ch":-5.1612,"ghes_ch":10,"dem_ch":2.6769,"lead_pop":5850743,"regtype4":1,"maxalt0B":2,"yhat":-4.0898},{"location":"Lesotho","local_id":"LSO","year":1995,"cardio_ch":5.438,"ghes_ch":137,"dem_ch":4.8314,"lead_pop":2135021,"regtype4":1,"maxalt0B":2,"yhat":-5.3976},{"location":"Liberia","local_id":"LBR","year":1995,"cardio_ch":-1.8422,"ghes_ch":11,"dem_ch":4.8192,"lead_pop":4503438,"regtype4":1,"maxalt0B":2,"yhat":-5.3902},{"location":"Libya","local_id":"LBY","year":1995,"cardio_ch":-0.0686,"ghes_ch":-33,"dem_ch":0.3251,"lead_pop":6278438,"regtype4":0,"maxalt0B":-1,"yhat":-4.5697},{"location":"Lithuania","local_id":"LTU","year":1995,"cardio_ch":-5.6292,"ghes_ch":913,"dem_ch":12.6436,"lead_pop":2878406,"regtype4":3,"maxalt0B":2,"yhat":-10.1396},{"location":"Macedonia","local_id":"MKD","year":1995,"cardio_ch":-7.4665,"ghes_ch":136,"dem_ch":5.8053,"lead_pop":2078453,"regtype4":2,"maxalt0B":2,"yhat":-5.9888},{"location":"Madagascar","local_id":"MDG","year":1995,"cardio_ch":-2.2892,"ghes_ch":9,"dem_ch":3.2439,"lead_pop":24235390,"regtype4":1,"maxalt0B":0,"yhat":-4.4545},{"location":"Malawi","local_id":"MWI","year":1995,"cardio_ch":-6.7127,"ghes_ch":16,"dem_ch":5.5317,"lead_pop":17215232,"regtype4":2,"maxalt0B":1,"yhat":-6.5406},{"location":"Malaysia","local_id":"MYS","year":1995,"cardio_ch":-6.2122,"ghes_ch":389,"dem_ch":0.9068,"lead_pop":30331008,"regtype4":1,"maxalt0B":0,"yhat":-4.8106},{"location":"Maldives","local_id":"MDV","year":1995,"cardio_ch":-16.1543,"ghes_ch":783,"dem_ch":2.2426,"lead_pop":363657,"regtype4":1,"maxalt0B":2,"yhat":-3.8262},{"location":"Mali","local_id":"MLI","year":1995,"cardio_ch":-4.1403,"ghes_ch":3,"dem_ch":5.6137,"lead_pop":17599696,"regtype4":2,"maxalt0B":1,"yhat":-6.5851},{"location":"Mauritania","local_id":"MRT","year":1995,"cardio_ch":-5.9982,"ghes_ch":31,"dem_ch":2.0929,"lead_pop":4067565,"regtype4":1,"maxalt0B":1,"yhat":-4.6766},{"location":"Mauritius","local_id":"MUS","year":1995,"cardio_ch":-11.2271,"ghes_ch":356,"dem_ch":10.1859,"lead_pop":1273213,"regtype4":3,"maxalt0B":2,"yhat":-8.6478},{"location":"Mexico","local_id":"MEX","year":1995,"cardio_ch":-4.4532,"ghes_ch":306,"dem_ch":8.2663,"lead_pop":127017224,"regtype4":2,"maxalt0B":2,"yhat":-7.4826},{"location":"Moldova","local_id":"MDA","year":1995,"cardio_ch":-6.8419,"ghes_ch":74,"dem_ch":6.5381,"lead_pop":4068897,"regtype4":2,"maxalt0B":2,"yhat":-6.4336},{"location":"Mongolia","local_id":"MNG","year":1995,"cardio_ch":-5.6971,"ghes_ch":109,"dem_ch":9.2755,"lead_pop":2959133,"regtype4":2,"maxalt0B":2,"yhat":-8.0952},{"location":"Morocco","local_id":"MAR","year":1995,"cardio_ch":-3.2118,"ghes_ch":171,"dem_ch":0,"lead_pop":34377512,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Mozambique","local_id":"MOZ","year":1995,"cardio_ch":-2.2161,"ghes_ch":2,"dem_ch":4.0984,"lead_pop":27977862,"regtype4":1,"maxalt0B":0,"yhat":-4.3243},{"location":"Namibia","local_id":"NAM","year":1995,"cardio_ch":-7.6735,"ghes_ch":144,"dem_ch":8.3777,"lead_pop":2458829,"regtype4":2,"maxalt0B":0,"yhat":-3.6722},{"location":"Nepal","local_id":"NPL","year":1995,"cardio_ch":-0.3781,"ghes_ch":13,"dem_ch":2.4864,"lead_pop":28513700,"regtype4":1,"maxalt0B":1,"yhat":-4.8899},{"location":"Netherlands","local_id":"NLD","year":1995,"cardio_ch":-13.1333,"ghes_ch":2402,"dem_ch":7.8217,"lead_pop":16924928,"regtype4":3,"maxalt0B":2,"yhat":-7.2127},{"location":"New Zealand","local_id":"NZL","year":1995,"cardio_ch":-12.2374,"ghes_ch":1328,"dem_ch":6.6915,"lead_pop":4528526,"regtype4":3,"maxalt0B":2,"yhat":-6.5267},{"location":"Nicaragua","local_id":"NIC","year":1995,"cardio_ch":-7.7439,"ghes_ch":141,"dem_ch":5.2283,"lead_pop":6082032,"regtype4":2,"maxalt0B":2,"yhat":-5.6385},{"location":"Niger","local_id":"NER","year":1995,"cardio_ch":-3.9165,"ghes_ch":3,"dem_ch":5.1515,"lead_pop":19899120,"regtype4":2,"maxalt0B":2,"yhat":-5.5919},{"location":"Nigeria","local_id":"NGA","year":1995,"cardio_ch":-5.5296,"ghes_ch":19,"dem_ch":3.1413,"lead_pop":182201968,"regtype4":1,"maxalt0B":1,"yhat":-5.2449},{"location":"North Korea","local_id":"PRK","year":1995,"cardio_ch":2.0652,"ghes_ch":3,"dem_ch":0,"lead_pop":25155316,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Norway","local_id":"NOR","year":1995,"cardio_ch":-13.9225,"ghes_ch":2933,"dem_ch":8.3676,"lead_pop":5210966,"regtype4":3,"maxalt0B":2,"yhat":-7.5441},{"location":"Oman","local_id":"OMN","year":1995,"cardio_ch":-6.5624,"ghes_ch":292,"dem_ch":0,"lead_pop":4490542,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Pakistan","local_id":"PAK","year":1995,"cardio_ch":-0.2575,"ghes_ch":2,"dem_ch":2.6534,"lead_pop":188924880,"regtype4":1,"maxalt0B":2,"yhat":-4.0755},{"location":"Panama","local_id":"PAN","year":1995,"cardio_ch":-9.2565,"ghes_ch":582,"dem_ch":10.8293,"lead_pop":3929141,"regtype4":2,"maxalt0B":2,"yhat":-9.0383},{"location":"Papua New Guinea","local_id":"PNG","year":1995,"cardio_ch":-0.4964,"ghes_ch":14,"dem_ch":2.7797,"lead_pop":7619320,"regtype4":1,"maxalt0B":2,"yhat":-4.1522},{"location":"Paraguay","local_id":"PRY","year":1995,"cardio_ch":-5.119,"ghes_ch":254,"dem_ch":6.7545,"lead_pop":6639124,"regtype4":2,"maxalt0B":2,"yhat":-6.5649},{"location":"Peru","local_id":"PER","year":1995,"cardio_ch":-14.2431,"ghes_ch":243,"dem_ch":8.5033,"lead_pop":31376672,"regtype4":2,"maxalt0B":2,"yhat":-7.6264},{"location":"Philippines","local_id":"PHL","year":1995,"cardio_ch":2.1912,"ghes_ch":46,"dem_ch":5.2531,"lead_pop":100699392,"regtype4":2,"maxalt0B":2,"yhat":-5.6536},{"location":"Poland","local_id":"POL","year":1995,"cardio_ch":-10.45,"ghes_ch":774,"dem_ch":13.7911,"lead_pop":38611792,"regtype4":3,"maxalt0B":2,"yhat":-10.8361},{"location":"Portugal","local_id":"PRT","year":1995,"cardio_ch":-16.1005,"ghes_ch":619,"dem_ch":12.5266,"lead_pop":10349802,"regtype4":3,"maxalt0B":2,"yhat":-10.0686},{"location":"Qatar","local_id":"QAT","year":1995,"cardio_ch":-16.4192,"ghes_ch":1580,"dem_ch":0,"lead_pop":2235356,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Congo","local_id":"COG","year":1995,"cardio_ch":-5.8722,"ghes_ch":55,"dem_ch":0.5364,"lead_pop":4620330,"regtype4":1,"maxalt0B":0,"yhat":-4.867},{"location":"Romania","local_id":"ROU","year":1995,"cardio_ch":-7.5588,"ghes_ch":580,"dem_ch":8.0171,"lead_pop":19511324,"regtype4":2,"maxalt0B":2,"yhat":-7.3313},{"location":"Russia","local_id":"RUS","year":1995,"cardio_ch":-6.2426,"ghes_ch":274,"dem_ch":1.8598,"lead_pop":143456912,"regtype4":1,"maxalt0B":0,"yhat":-4.6654},{"location":"Rwanda","local_id":"RWA","year":1995,"cardio_ch":-12.8474,"ghes_ch":24,"dem_ch":0.1685,"lead_pop":11609666,"regtype4":1,"maxalt0B":0,"yhat":-4.9231},{"location":"Sao Tome and Principe","local_id":"STP","year":1995,"cardio_ch":-0.1362,"ghes_ch":10,"dem_ch":9.3467,"lead_pop":190344,"regtype4":2,"maxalt0B":2,"yhat":-8.1384},{"location":"Saudi Arabia","local_id":"SAU","year":1995,"cardio_ch":-0.3011,"ghes_ch":1436,"dem_ch":0,"lead_pop":31540372,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Senegal","local_id":"SEN","year":1995,"cardio_ch":-2.0609,"ghes_ch":12,"dem_ch":8.6951,"lead_pop":15129273,"regtype4":2,"maxalt0B":1,"yhat":-8.2553},{"location":"Serbia","local_id":"SRB","year":1995,"cardio_ch":-2.8166,"ghes_ch":411,"dem_ch":6.3365,"lead_pop":8850976,"regtype4":2,"maxalt0B":2,"yhat":-6.3112},{"location":"Seychelles","local_id":"SYC","year":1995,"cardio_ch":-5.6038,"ghes_ch":176,"dem_ch":3.1864,"lead_pop":96471,"regtype4":1,"maxalt0B":0,"yhat":-4.4632},{"location":"Sierra Leone","local_id":"SLE","year":1995,"cardio_ch":0.3415,"ghes_ch":-4,"dem_ch":3.9373,"lead_pop":6453185,"regtype4":1,"maxalt0B":0,"yhat":-4.3488},{"location":"Singapore","local_id":"SGP","year":1995,"cardio_ch":-16.4399,"ghes_ch":1374,"dem_ch":1.9772,"lead_pop":5603741,"regtype4":1,"maxalt0B":0,"yhat":-4.6475},{"location":"Slovakia","local_id":"SVK","year":1995,"cardio_ch":-6.5636,"ghes_ch":979,"dem_ch":13.4215,"lead_pop":5426258,"regtype4":3,"maxalt0B":2,"yhat":-10.6118},{"location":"Slovenia","local_id":"SVN","year":1995,"cardio_ch":-11.943,"ghes_ch":907,"dem_ch":13.6064,"lead_pop":2067526,"regtype4":3,"maxalt0B":2,"yhat":-10.724},{"location":"Solomon Islands","local_id":"SLB","year":1995,"cardio_ch":-1.9009,"ghes_ch":-15,"dem_ch":4.305,"lead_pop":583591,"regtype4":2,"maxalt0B":2,"yhat":-5.0781},{"location":"Somalia","local_id":"SOM","year":1995,"cardio_ch":-4.594,"ghes_ch":-2,"dem_ch":-0.1481,"lead_pop":10787104,"regtype4":0,"maxalt0B":-1,"yhat":-4.5047},{"location":"South Africa","local_id":"ZAF","year":1995,"cardio_ch":-0.2834,"ghes_ch":328,"dem_ch":11.1006,"lead_pop":54490408,"regtype4":3,"maxalt0B":0,"yhat":-3.2573},{"location":"South Korea","local_id":"KOR","year":1995,"cardio_ch":-19.6544,"ghes_ch":1299,"dem_ch":11.2515,"lead_pop":50293440,"regtype4":3,"maxalt0B":1,"yhat":-9.641},{"location":"Spain","local_id":"ESP","year":1995,"cardio_ch":-11.7932,"ghes_ch":930,"dem_ch":11.9547,"lead_pop":46121696,"regtype4":3,"maxalt0B":2,"yhat":-9.7215},{"location":"Sri Lanka","local_id":"LKA","year":1995,"cardio_ch":-8.1103,"ghes_ch":59,"dem_ch":2.1457,"lead_pop":20715010,"regtype4":2,"maxalt0B":2,"yhat":-3.7674},{"location":"Sudan","local_id":"SDN","year":1995,"cardio_ch":-4.6832,"ghes_ch":22,"dem_ch":0.0474,"lead_pop":40234880,"regtype4":1,"maxalt0B":0,"yhat":-4.9415},{"location":"Suriname","local_id":"SUR","year":1995,"cardio_ch":-2.6603,"ghes_ch":204,"dem_ch":10.3763,"lead_pop":542974,"regtype4":2,"maxalt0B":0,"yhat":-3.3677},{"location":"Swaziland","local_id":"SWZ","year":1995,"cardio_ch":1.0271,"ghes_ch":336,"dem_ch":0,"lead_pop":1286968,"regtype4":0,"maxalt0B":-1,"yhat":-4.525},{"location":"Sweden","local_id":"SWE","year":1995,"cardio_ch":-10.2205,"ghes_ch":2512,"dem_ch":9.0625,"lead_pop":9779426,"regtype4":3,"maxalt0B":2,"yhat":-7.9659},{"location":"Switzerland","local_id":"CHE","year":1995,"cardio_ch":-12.1426,"ghes_ch":2018,"dem_ch":9.8194,"lead_pop":8298663,"regtype4":3,"maxalt0B":0,"yhat":-3.4526},{"location":"Syria","local_id":"SYR","year":1995,"cardio_ch":-5.9014,"ghes_ch":-208,"dem_ch":-0.0418,"lead_pop":18502412,"regtype4":1,"maxalt0B":0,"yhat":-4.9551},{"location":"Taiwan","local_id":"TWN","year":1995,"cardio_ch":-12.9528,"ghes_ch":971,"dem_ch":11.3717,"lead_pop":23381036,"regtype4":3,"maxalt0B":1,"yhat":-9.7061},{"location":"Tajikistan","local_id":"TJK","year":1995,"cardio_ch":-2.0355,"ghes_ch":35,"dem_ch":0.1862,"lead_pop":8481856,"regtype4":1,"maxalt0B":0,"yhat":-4.9204},{"location":"Tanzania","local_id":"TZA","year":1995,"cardio_ch":-4.3962,"ghes_ch":16,"dem_ch":4.4698,"lead_pop":53470420,"regtype4":2,"maxalt0B":0,"yhat":-4.2677},{"location":"Thailand","local_id":"THA","year":1995,"cardio_ch":-13.2152,"ghes_ch":309,"dem_ch":3.5504,"lead_pop":67959360,"regtype4":1,"maxalt0B":2,"yhat":-4.62},{"location":"Timor-Leste","local_id":"TLS","year":1995,"cardio_ch":-2.9741,"ghes_ch":100,"dem_ch":5.7275,"lead_pop":1184765,"regtype4":1,"maxalt0B":0,"yhat":-4.076},{"location":"Togo","local_id":"TGO","year":1995,"cardio_ch":-1.7978,"ghes_ch":10,"dem_ch":2.2211,"lead_pop":7304578,"regtype4":1,"maxalt0B":2,"yhat":-3.8132},{"location":"Trinidad and Tobago","local_id":"TTO","year":1995,"cardio_ch":-9.8231,"ghes_ch":814,"dem_ch":8.3883,"lead_pop":1360087,"regtype4":3,"maxalt0B":2,"yhat":-7.5566},{"location":"Tunisia","local_id":"TUN","year":1995,"cardio_ch":-4.7329,"ghes_ch":291,"dem_ch":2.174,"lead_pop":11253554,"regtype4":1,"maxalt0B":1,"yhat":-4.7206},{"location":"Turkey","local_id":"TUR","year":1995,"cardio_ch":-9.6239,"ghes_ch":600,"dem_ch":5.9583,"lead_pop":78665832,"regtype4":2,"maxalt0B":2,"yhat":-6.0816},{"location":"Turkmenistan","local_id":"TKM","year":1995,"cardio_ch":-3.7936,"ghes_ch":176,"dem_ch":-0.0012,"lead_pop":5373502,"regtype4":0,"maxalt0B":-1,"yhat":-4.5248},{"location":"Uganda","local_id":"UGA","year":1995,"cardio_ch":-6.0541,"ghes_ch":-8,"dem_ch":1.1314,"lead_pop":39032384,"regtype4":1,"maxalt0B":0,"yhat":-4.7764},{"location":"Ukraine","local_id":"UKR","year":1995,"cardio_ch":-2.6371,"ghes_ch":4,"dem_ch":4.2283,"lead_pop":44823764,"regtype4":1,"maxalt0B":2,"yhat":-5.0315},{"location":"United Kingdom","local_id":"GBR","year":1995,"cardio_ch":-13.7601,"ghes_ch":1903,"dem_ch":8.2282,"lead_pop":64715808,"regtype4":3,"maxalt0B":1,"yhat":-8.0022},{"location":"United States","local_id":"USA","year":1995,"cardio_ch":-8.4174,"ghes_ch":5846,"dem_ch":9.2243,"lead_pop":321773632,"regtype4":3,"maxalt0B":2,"yhat":-8.0641},{"location":"Uruguay","local_id":"URY","year":1995,"cardio_ch":-9.0986,"ghes_ch":659,"dem_ch":11.0791,"lead_pop":3431555,"regtype4":3,"maxalt0B":1,"yhat":-9.5475},{"location":"Uzbekistan","local_id":"UZB","year":1995,"cardio_ch":4.2721,"ghes_ch":103,"dem_ch":0.0106,"lead_pop":29893488,"regtype4":0,"maxalt0B":-1,"yhat":-4.5265},{"location":"Vanuatu","local_id":"VUT","year":1995,"cardio_ch":-1.1633,"ghes_ch":-14,"dem_ch":6.4527,"lead_pop":264651,"regtype4":2,"maxalt0B":2,"yhat":-6.3817},{"location":"Venezuela","local_id":"VEN","year":1995,"cardio_ch":-5.1731,"ghes_ch":-1,"dem_ch":1.8768,"lead_pop":31108084,"regtype4":2,"maxalt0B":1,"yhat":-4.5595},{"location":"Yemen","local_id":"YEM","year":1995,"cardio_ch":-3.9772,"ghes_ch":-36,"dem_ch":1.0176,"lead_pop":26832216,"regtype4":1,"maxalt0B":1,"yhat":-4.0938},{"location":"Zambia","local_id":"ZMB","year":1995,"cardio_ch":-7.6858,"ghes_ch":40,"dem_ch":4.5592,"lead_pop":16211766,"regtype4":2,"maxalt0B":1,"yhat":-6.0135},{"location":"Zimbabwe","local_id":"ZWE","year":1995,"cardio_ch":4.8796,"ghes_ch":17,"dem_ch":0.503,"lead_pop":15602752,"regtype4":1,"maxalt0B":0,"yhat":-4.8721}]
+
+
+// set the dimensions and margins of the graph
+var margin = {top: 50, right: 20, bottom: 70, left: 130},
+    width = 900 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+
+var svg = d3.select("div#chartId")
+               .append("div")
+               // Container class to make it responsive.
+               .classed("svg-container", true)
+               .append("svg")
+               // Responsive SVG needs these 2 attributes and no width and height attr.
+               .attr("preserveAspectRatio", "xMinYMin meet")
+               .attr("viewBox", "0 0 1000 800")
+               // Class to make it responsive.
+               .classed("svg-content-responsive", true)
+               .append("g")
+               .attr("transform",
+                       "translate(" + margin.left + "," + margin.top + ")");
+
+//Read the data
+window.onload = function() {
+
+  // Add X axis
+  var x = d3.scaleLinear()
+    .domain([-2, 20])
+    .range([ 0, width ]);
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(5))
+    .style("font-size", "13px")
+    .style('color', '#60666B');
+
+  // text label for the x axis
+    svg.append("text")
+        .attr("transform",
+              "translate(" + (width/2) + " ," +
+                             (height + 35) + ")")
+        .style("text-anchor", "middle")
+        .style("font-family","larsseit_regular")
+        .style("font-size", "14px")
+        .style('color', '#60666B')
+        .text("Change in Democratic Experience");
+
+  // Add Y axis
+  var y = d3.scaleLinear()
+    .domain([-20, 5])
+    .range([ height, 0]);
+  svg.append("g")
+    .call(d3.axisLeft(y).ticks(5))
+    .style("font-size", "13px")
+    .style('color', '#60666B');
+
+      // text label for the y axis
+      svg.append("text")
+          .attr("transform", "rotate(0)")
+          .style("font-family","larsseit_regular")
+          .style("font-size", "14px")
+          .style('color', '#60666B')
+          .attr("y", 140)
+          .attr("x",-120)
+          .attr("dy", "1em")
+          .text("Change in");
+          // text label for the y axis
+          svg.append("text")
+              .attr("transform", "rotate(0)")
+              .style("font-family","larsseit_regular")
+              .style("font-size", "14px")
+              .style('color', '#60666B')
+              .attr("y", 160)
+              .attr("x",-120)
+              .attr("dy", "1em")
+              .text("Deaths");
+
+  // Add a scale for bubble size
+  var z = d3.scaleLinear()
+    .domain([200000, 1310000000])
+    .range([ 4, 40]);
+
+    // Add a scale for bubble color
+    var colorScheme = [d3.rgb("#8e7f75"), d3.rgb("#7f7f7f"), d3.rgb("#303b1f "), d3.rgb("#5c6b40"), d3.rgb("#99b782")];
+
+      var colorScale = d3.scaleOrdinal()
+          .domain([-2, -1, 0, 1, 2])
+          .range(colorScheme);
+
+  // -1- Create a tooltip div that is hidden by default:
+  var tooltip = d3.select("#chartId")
+    .append("div")
+      .style("opacity", 0)
+      .style("background-color", "white")
+      .style("padding", "10px")
+      .style("color", "#60666B")
+      .style("position", "absolute")
+      .style("font-family","larsseit_regular")
+      .style("font-size", "13px")
+
+  // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
+  var format = d3.format(".1f")
+  var showTooltip = function(d) {
+    tooltip
+      .style("opacity", 1)
+      .html(d.location + ":  <br>Democracy: "+ format(d.dem_ch) + "<br>CVD: " + format(d.cardio_ch) + "%")
+      .style("left", (d3.mouse(d3.event.currentTarget)[0]+10) + "px")
+      .style("top", (d3.mouse(d3.event.currentTarget)[1]+10) + "px")
+      .style("position", "absolute")
+      .style('box-shadow', 'rgba(0, 0, 0, 0.3) 0 2px 10px')
+  }
+  var moveTooltip = function(d) {
+    tooltip
+      .style("left", (d3.mouse(d3.event.currentTarget)[0]+10) + "px")
+      .style("top", (d3.mouse(d3.event.currentTarget)[1]+10) + "px")
+      .style("position", "absolute")
+  }
+  var hideTooltip = function(d) {
+    tooltip
+      .style("opacity", 0)
+  }
+
+  // Add dots
+  svg.append('g')
+    .selectAll("dot")
+    .data(chartdata)
+    .enter()
+    .append("circle")
+      .attr("class", "bubbles")
+      .attr("cx", function (d) { return x(d.dem_ch); } )
+      .attr("cy", function (d) { return y(d.cardio_ch); } )
+      .attr("r", function (d) { return z(d.lead_pop); } )
+      .style("fill", function (d) { return colorScale(d.maxalt0B); } )
+    // -3- Trigger the functions
+    .on("mousemove", moveTooltip )
+    .on("mouseleave", hideTooltip )
+    .on('mouseover', function (d, i) { showTooltip(d,i)})
+
+ function fade(c, opacity) {
+   var index = labeldict[c]
+   svg.selectAll(".bubbles")
+        .transition()
+        .style("opacity", 0.8);
+        if (index > -2) {
+          svg.selectAll(".bubbles")
+             .filter(function (d) {return d.maxalt0B != index;})
+             .transition()
+             .style("opacity", opacity);
+        }
+     }
+
+
+// Legend
+var labels = ['All', 'Closed Autocracy', 'No Turnover', 'One Turnover', 'More than One Turnover'];
+var labeldict = {'All':-2, 'Closed Autocracy':-1, 'No Turnover':0, 'One Turnover':1, 'More than One Turnover':2}
+drawLegend(labels, colorScheme, 5)
+
+function drawLegend(names, colors, cols, dx, dy, padding) {
+
+  dx = typeof dx !== 'undefined' ? dx : 10;
+  dy = typeof dy !== 'undefined' ? dy : 10;
+  cols = typeof cols !== 'undefined' ? cols : 1;
+  padding = typeof padding !== 'undefined' ? padding : 12;
+
+    var container = svg.append("g");
+    var legend = container.append("g").attr("transform", "translate(0,45)");;
+
+    var rows = Math.ceil(names.length / cols);
+    var curStart = 0;
+    for (var i = 0; i < cols; i++) {
+        var curLegend = legend.append("g")
+            .attr("transform", "translate(" + curStart + ",0)")
+            .call(
+              d3.legendColor()
+                .labels(function (d) { return labels[i]; })
+                             .shapePadding(70)
+                             .shapeWidth(90)
+                             .orient('vertal')
+                             .shape('circle')
+                             .scale(colorScale
+                               .domain(names.slice(i * rows, (i + 1) * rows))
+                              .range(colors.slice(i * rows, (i + 1) * rows)))
+                             .on("cellclick", function(d){fade(d, .2);}))
+        curStart += curLegend.node().getBBox().width + padding;
+    }
+
+    // adapting sizes based on the bounding box of legend
+    var size = container.node().getBBox();
+    container.attr("transform", "translate(" + (-size.x) + "," + (-size.y) + ")");
+    legend.style("font-family","larsseit_regular")
+              .style("font-size", "14px")
+              .style('color', '#60666B')
+    .attr("transform", "translate(" + padding + "," + padding + ")");
+    svg.attr("width", size.width + 2 * padding).attr("height", size.height + 2 * padding);
+  }
+}
+
+</script>
