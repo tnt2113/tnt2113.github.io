@@ -13,7 +13,7 @@ var App = {
     var greetText = 
       "################################################################################################\n"+
       "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
-      "|\t\tWelcome, You have reached " + commandText('Tara') + "  -  graduate student and coffee aficionado.\t\t\t|\n"+
+      "|\t\tWelcome, You have reached " + commandText('Tara') + "  -  health economist and coffee aficionado.\t\t\t|\n"+
       "|\t\tPlease type " +commandText('ls')+" or " +commandText('help')+ " followed by the ENTER key to access a list of commands.\t\t|\n"+
       "|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t  |\n"+
       "################################################################################################\n";
@@ -61,7 +61,7 @@ var App = {
     this.echo("|  " + commandText("research") + "           - Research projects");
     this.echo("|  " + commandText("skills") + "             - Technical Proficiencies");    
     this.echo("|  " + commandText("work") + "               - Professional Experience");
-    this.echo("|  " + commandText("courses") + "            - Course notes");
+    this.echo("|  " + commandText("teaching") + "           - Course notes");
     this.echo("|  " + commandText("online") + "             - Find me on the internet");
     this.echo("|  " + commandText("credits") + "            - How I made this website");
    // this.echo("|");
@@ -71,7 +71,7 @@ var App = {
   online: function(){
     this.echo();
     this.echo("|  " + commandText("GitHub") + ":       http://github.com/tnt2113");
-    this.echo("|  " + commandText("LinkedIn") + ":     https://www.linkedin.com/in/tara-templin-7360b174");
+    this.echo("|  " + commandText("LinkedIn") + ":     https://www.linkedin.com/in/tara-templin");
     this.echo();
   },
   github: function(){
@@ -82,7 +82,7 @@ var App = {
 
   linkedin: function(){
     this.echo();
-    this.echo("|  https://www.linkedin.com/in/tara-templin-7360b174");
+    this.echo("|  https://www.linkedin.com/in/tara-templin");
     this.echo();
   },
 
@@ -100,7 +100,6 @@ var App = {
   work: function(){
     this.echo();
     this.echo("|  " + commandText('Stanford University') + "                            ");
-    this.echo("|    • Gerhard Casper Fellow (Palo Alto, CA; June 2018 – Present)");
     this.echo("|    • Teaching Assistant, Outcomes Analysis (Palo Alto, CA; April 2020 – June 2020)");
     this.echo("|    • Research Assistant, Socio-Economic Determinants of Obesity (Palo Alto, CA; September 2017 – June 2018)");
     this.echo("|");    
@@ -118,12 +117,6 @@ var App = {
     this.echo("|");
     this.echo("|  " + commandText('Department of Interior') + "                            ");
     this.echo("|    • Summer Fellow, Office of Public Engagement (Washington, DC; June 2010 – August 2010)");
-    this.echo("|");
-    this.echo("|  " + commandText('Education') + "                            ");
-    this.echo("|    • Ph.D in Health Economics : Stanford University");
-    this.echo("|    • MS in Stats              : Stanford University");
-    this.echo("|    • GNM coursework           : University of Washington");
-    this.echo("|    • BA in Econ-Math          : Columbia University");
     this.echo();
   },
   whoami: function(){
@@ -131,15 +124,15 @@ var App = {
   },
   about: function(){
     this.echo();
-    this.echo("|  Name:         " + commandText('Tara Templin'));
+    this.echo("|  Name:         " + commandText('Tara Templin, PhD MS'));
     this.echo("|");
-    this.echo("|  About:        I am a " + commandText('Health Policy PhD candidate') + " specializing in Health Economics at " + commandText('Stanford University') +".");
-    this.echo("|                I also obtained my Statistics M.S. from Stanford and my B.A. in Economics and Mathematics from Columbia. Before Stanford, I worked at the ");
-    this.echo("|                University of Washington's Institute for Health Metrics and Evaluation. I like reproducible research and making complex statistical "); 
-    this.echo("|                concepts easy to understand. Other interests include coffee, travel, board games, rock climbing, and disco music.");
+    this.echo("|  About:        I am a " + commandText('global health economist') + " who studies the causes of population health improvement in resource-constrained settings.");
+    this.echo("|                I obtained my Statistics MS and Health Policy PhD from Stanford and my B.A. in Economics and Mathematics from Columbia. My methodological expertise"); 
+    this.echo("|                in observational data analysis, applied microeconomics, and demographic methods.");
     this.echo("|");
-    this.echo("|  More here:   http://tnt2113.github.io/about");
+    this.echo("|  More here:    http://tnt2113.github.io/");
     this.echo();
+     
   },
   project: function(){
     this.exec('projects');
@@ -194,17 +187,17 @@ var App = {
     this.echo("|  Shout out to the " + commandText('Examples Page') + " for providing this template : http://terminal.jcubic.pl/examples.php");        
     this.echo();
   },
-  blog: function(){
-    window.location.href = "./blog";
+  resources: function(){
+    window.location.href = "../resources";
   },
   courses: function(){
-    window.location.href = "./courses";
+    window.location.href = "../teaching";
   },  
   code: function(){
-    window.location.href = "./code";
+    window.location.href = "../code";
   },   
   research: function(){
-    window.location.href = "./research";
+    window.location.href = "../research";
   },   
   cls: function(){
     this.clear();
@@ -265,16 +258,16 @@ var App = {
   mobile: function(){
     that.clear();
     that.echo("[[g;#5BD100;]TARA TEMPLIN]");
-    that.echo("Ph.D. candidate in Health Policy");
+    that.echo("Health Economist");
     that.echo();   
     that.echo("[[g;#B2D100;]ABOUT]");    
-    that.echo("http://tnt2113.github.io/about");  
+    that.echo("http://tnt2113.github.io/");  
     that.echo();   
     that.echo("[[g;#B2D100;]RESEARCH]");
     that.echo("http://tnt2113.github.io/research");
     that.echo();
     that.echo("[[g;#B2D100;]TEACHING]");
-    that.echo("http://tnt2113.github.io/courses");
+    that.echo("http://tnt2113.github.io/teaching");
     that.echo();
   },
 }
