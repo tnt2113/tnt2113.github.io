@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+ <!--      <link href = "../css/style.css" rel="stylesheet" type = "text/css"/>-->
+
+<script   src="https://code.jquery.com/jquery-2.2.1.min.js"   integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="   crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function($) {
+  
+    var navbar = $('#navbar-main'),
+        distance = navbar.offset().top,
+        $window = $(window);
+
+    $window.scroll(function() {
+        if ($window.scrollTop() >= distance) {
+            navbar.removeClass('navbar-fixed-top').addClass('navbar-fixed-top');
+            $("body").css("padding-top", "70px");
+        } else {
+            navbar.removeClass('navbar-fixed-top');
+            $("body").css("padding-top", "0px");
+        }
+    });
+});
+</script>
+<title>Tara</title>
+</head>
+  <body>
+
+<div class="container">
+  <header class="page-header">
+    <h1>tnt2113.github.io</h1>
+  </header>
+</div>
+
+<nav id="navbar-main" class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tara</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../">Home</a></li>
+        <li><a href="../research">Research</a></li>
+        <li><a href="../code">Code</a></li>
+        <li><a href="../teaching">Teaching</a></li>
+        <li><a href="../resources">Resources</a></li>
+        <li><a href="../console">Console</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<main class="container">
+
+<body>
+
+  <h1 class="post-title">Code Tutorials </h1>
+
+<p>If you are looking for tutorials, I&#39d suggest the following:</p>
+<p>Python:
+<ul>
+<li><a href="http://learnpythonthehardway.org/book/">Learn Python the Hard Way</a></li>
+<li><a href="https://automatetheboringstuff.com/">Automate the Boring Stuff</a></li>
+<li><a href="https://github.com/jrjohansson/scientific-python-lectures">Scientific Computing with Python</a></li>
+<li><a href="https://www.kevinsheppard.com/images/0/09/Python_introduction.pdf">Python for Econometrics</a></li>
+</ul></p>
+<p>Stata:
+<ul>
+<li><a href="http://www.ats.ucla.edu/stat/stata/">UCLA</a></li>
+<li><a href="http://www.princeton.edu/~otorres/Stata/">Princeton</a></li>
+</ul>
+<p>Git:
+<ul>
+<li><a href="https://try.github.io/levels/1/challenges/1">Try Git</a></li>
+</ul>
+<p>R: 
+<ul>
+<li><a href="https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf">R for Beginners</a></li>
+</ul>
+<p>Javascript (D3):
+<ul>
+<li><a href="https://www.dashingd3js.com/table-of-contents">Dashing D3</a></li> 
+</ul></p>
+</main>
+</body>
+</html>
