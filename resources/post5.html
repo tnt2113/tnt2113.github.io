@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+ <!--      <link href = "../css/style.css" rel="stylesheet" type = "text/css"/>-->
+
+<script   src="https://code.jquery.com/jquery-2.2.1.min.js"   integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="   crossorigin="anonymous"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+jQuery(document).ready(function($) {
+  
+    var navbar = $('#navbar-main'),
+        distance = navbar.offset().top,
+        $window = $(window);
+
+    $window.scroll(function() {
+        if ($window.scrollTop() >= distance) {
+            navbar.removeClass('navbar-fixed-top').addClass('navbar-fixed-top');
+            $("body").css("padding-top", "70px");
+        } else {
+            navbar.removeClass('navbar-fixed-top');
+            $("body").css("padding-top", "0px");
+        }
+    });
+});
+</script>
+<title>Tara</title>
+</head>
+  <body>
+
+<div class="container">
+  <header class="page-header">
+    <h1>tnt2113.github.io</h1>
+  </header>
+</div>
+
+<nav id="navbar-main" class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Tara</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../">Home</a></li>
+        <li><a href="../research">Research</a></li>
+        <li><a href="../code">Code</a></li>
+        <li><a href="../teaching">Teaching</a></li>
+        <li><a href="../resources">Resources</a></li>
+        <li><a href="../console">Console</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<main class="container">
+
+<body>
+
+<h1 class="post-title">Writing Papers for Medical / Public Health Journals</h1>
+<p> There are many resources on how to write a public health or medical paper:
+<ul>
+<li><a href=https://www.youtube.com/@sciwritestanford1636/videos">Stanford Scientific Writing Class</a></li>
+<li><a href="https://globalhealth.stanford.edu/wp-content/uploads/2019/07/A-Guide-to-Quantitative-Scientific-Writing-V-23.pdf">The Pathway to Publishing: A Guide to Quantitative Writing in the Health Sciences</a></li>
+<li><a href="https://cancer.dartmouth.edu/sites/default/files/2019-05/papertrail.pdf">Preparing Manuscripts for Submission to Medical Journals: The Paper Trail</a></li>
+<li><a href="https://jphmpdirect.com/elearning-module/">Writing in Boxes for Scientific Journals</a></li>
+</ul></p>
+
+<p> I wrote this outline for writing medical papers when I was a graduate student instructor for Stanford Medicine's Outcomes Analysis class. It demostrates one way to structure a paper for the medical literature:</p>
+
+  <ul>
+    <li>Introduction</li>
+    <ul>
+      <li>General context about your research question</li>
+      <li>Describe specific literature related to your research question</li>
+      <li>Describe knowledge gap</li>
+      <li>What you do (state research question, specific objectives/hypotheses)</li>
+      <li>How this work fills the knowledge gap/improves science in this area</li>
+    </ul>
+    <li>Methods: Data and Statistical Analysis</li>
+    <ul>
+      <li>Overview of your approach</li>
+      <li>Description of all data sources (each source gets its own sub section)</li>
+      <ul>
+          <li>Eligibility criteria to be included in the input data set (sampling, etc)</li>
+          <li>Clearly state measurement of outcomes, exposures, diagnostic criteria</li>
+          <li>If applicable, state how you linked data sets or excluded any data</li>
+      </ul>
+      <li>Statistical Analysis</li>
+      <ul>
+          <li>Describe all statistical methods, with brief reasoning and equations</li>
+          <li>Describe assumptions needed for causal inference/how your method addresses potential sources of bias if applicable</li>
+          <li>Describe any methods used to analyze subgroups, interactions, sensitivity, etc.</li>
+      </ul>      
+
+    </ul>
+     <li>Results</li>
+    <ul>
+      <li>Descriptive summaries [Table 1 reports summary characteristics of data]</li>
+      <li>Main results, followed by subgroup/sensitivity [with confidence intervals]</li>
+      <li>Do not interpret findings in this section, clearly report results from your methods/hypothesis tests.</li>
+    </ul>
+    <li>Discussion</li>
+    <ul>
+      <li>2-3 Main findings with reference to specific objectives from intro</li>
+      <li>Interpretation of results</li>
+      <li>Limitations</li>
+      <li>Generalizability/conclusions</li>
+      <li>Future work (if appropriate)</li>
+    </ul>
+  </ul>
+  
+</main>
+</body>
+</html>
