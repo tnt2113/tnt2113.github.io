@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Draft Instructions for Parents (BDM Auction)</title>
+  <meta name="description" content="Click-through BDM slider flow." />
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: #121831;
+      --ink: #f2f5ff;
+      --muted: #b8c1ff;
+      --accent: #6ea8fe;
+      --ok: #41d695;
+      --warn: #ffce3a;
+      --bad: #ff7a7a;
+      --line: #2a335e;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background: radial-gradient(1200px 800px at 10% -10%, #1d2548 0%, #0b1020 55%, #070a14 100%);
+    }
+    .wrap{max-width:980px;margin:clamp(12px, 4vw, 36px) auto;padding:clamp(12px, 3vw, 28px)}
+    header.app{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.3px}
+    .brand .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#7aa5ff,#9fe5e2);box-shadow:0 0 12px rgba(127,196,255,.6)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.2));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .panel{padding:clamp(14px, 3vw, 28px)}
+    h1,h2,h3{margin:0 0 10px}
+    h1{font-size:clamp(22px, 3.4vw, 32px)}
+    h2{font-size:clamp(18px, 2.4vw, 24px); color:var(--muted)}
+    p{line-height:1.55}
+    .muted{color:var(--muted)}
+    .btnbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{border:1px solid var(--line);background:linear-gradient(180deg,#263163,#18204a);color:var(--ink);padding:12px 16px;border-radius:12px;cursor:pointer;font-weight:600;transition:.15s;box-shadow:0 6px 16px rgba(0,0,0,.2);user-select:none}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(0,0,0,.25)}
+    .btn.primary{background:linear-gradient(180deg,#3d73ff,#2850c2)}
+    .btn.ghost{background:transparent}
+    .progress{height:10px;background:#0d1327;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:6px}
+    .progress .bar{height:100%;width:0;background:linear-gradient(90deg,#58a6ff,#6ee7d1)}
+    .page{display:none}
+    .page.active{display:block}
+    .kicker{font-size:.9rem;font-weight:700;letter-spacing:.35px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    ul.faq{margin:10px 0 0 18px}
+    li+li{margin-top:8px}
+    .slider-wrap{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:10px}
+    .amount{font-size:28px;font-weight:800;letter-spacing:.3px}
+    input[type="range"]{width:100%}
+    .row{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+    .col{flex:1 1 260px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:10px}
+    .check,.radio{display:flex;gap:10px;align-items:flex-start;background:rgba(0,0,0,.15);padding:12px;border:1px solid var(--line);border-radius:12px}
+    .note{font-size:.95rem;color:var(--muted)}
+    .order{list-style:none;padding:0;margin:10px 0 0 0;display:flex;flex-direction:column;gap:10px}
+    .order li{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border:1px dashed var(--line);border-radius:12px;background:rgba(255,255,255,.03)}
+    .offer{padding:16px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg, rgba(65,214,149,.15), rgba(0,0,0,.1))}
+    .offer.no{background:linear-gradient(180deg, rgba(255,122,122,.15), rgba(0,0,0,.1))}
+    .footnote{font-size:.9rem;color:var(--muted)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <header class="app">
+      <div class="brand" aria-live="polite"><span class="dot"></span> <span>Draft Instructions for Parents</span></div>
+      <div style="flex:1"></div>
+      <div class="footnote">No data is collected.</div>
+    </header>
+
+    <div class="card">
+      <div class="panel">
+        <div class="kicker">Step <span id="stepNow">1</span> of <span id="stepMax">7</span></div>
+        <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
+      </div>
+      <div class="panel" id="pageContainer">
+
+        <!-- PAGES -->
+        <section class="page active" data-key="intro" tabindex="-1">
+          <h1>Help Us Understand What Support You Need</h1>
+          <p>We want to help more families get their kids the HPV vaccine. To do that, we’re offering gift cards to parents who schedule and complete their child’s HPV shot within 90 days.</p>
+          <p>But here’s the thing: every family is different. Some may need more help than others. That’s why we want to know the smallest gift card amount that would make it worth it for you to get your child vaccinated.</p>
+          <p>This is not a test. There are no right or wrong answers. We just want to understand what would help your family.</p>
+        </section>
+
+        <section class="page" data-key="how" tabindex="-1">
+          <h1>💡 How It Works</h1>
+          <p>We’ll ask you to move a slider to pick the smallest gift card amount that would make you say:</p>
+          <p><em>“Yes, I’ll get my child vaccinated if I get at least this much.”</em></p>
+          <p>After you choose your amount, the system will randomly pick a number between $0 and the highest possible gift card amount.</p>
+          <p>If the random number is equal to or more than your number, you’ll be offered that amount as a gift card — if you get your child vaccinated in time.</p>
+          <p>If the random number is less than your number, you won’t get a gift card.</p>
+        </section>
+
+        <section class="page" data-key="why" tabindex="-1">
+          <h1>✅ Why It’s Best to Be Honest</h1>
+          <p>This system is designed so that telling the truth is the best choice.</p>
+          <ul>
+            <li>If you ask for too much, you might not get any gift card at all.</li>
+            <li>If you ask for too little, you might get a gift card that doesn’t really help you.</li>
+          </ul>
+          <p>So it’s best to choose the real amount that would make it worth it for your family.</p>
+          <h3>📊 Example</h3>
+          <p>Let’s say the highest gift card possible is $<span class="mono" id="exMax">50</span>.</p>
+          <p>You say: <br/>“I would do it for $<span class="mono" id="exWould">20</span>.”</p>
+          <p>The system randomly picks a number between $0 and $<span class="mono" id="exMax2">50</span>. Let’s say it picks $<span class="mono">25</span>.</p>
+          <p>Because $25 is more than your $20, you get offered $25 if you get your child vaccinated in time.</p>
+          <p>But if the system had picked $15, you wouldn’t get a gift card — because $15 is less than your $20.</p>
+        </section>
+
+        <section class="page" data-key="faq" tabindex="-1">
+          <h1>❓ Common Questions & Tips</h1>
+          <ol class="faq">
+            <li><strong>What if I don’t want a gift card?</strong><br/>That’s totally okay! You can move the slider to $0 if you would get your child vaccinated without needing a gift card.</li>
+            <li><strong>What if I’m not sure how much I need?</strong><br/>Think about what would help cover your time, travel, or other costs. Pick the smallest amount that would make it easier for you to say yes.</li>
+            <li><strong>What if I pick a number and then change my mind?</strong><br/>You can take your time before submitting. Once you submit, your number is final — so make sure it feels right for you.</li>
+            <li><strong>What happens if I get offered a gift card?</strong><br/>You’ll get a message with the offer. If you get your child vaccinated within 90 days, you’ll receive the gift card digitally.</li>
+            <li><strong>What if I don’t get offered a gift card?</strong><br/>That just means the random number was lower than your amount. You can still get your child vaccinated — but there won’t be a gift card this time.</li>
+            <li><strong>Is this a trick to get me to take less money?</strong><br/>Nope! This method is designed to be fair. The best way to get the right offer is to be honest about what you need.</li>
+          </ol>
+        </section>
+
+        <section class="page" data-key="slider" tabindex="-1">
+          <h1>Now Enter Your Amount</h1>
+          <p class="muted">Move the slider to choose the <strong>smallest</strong> gift card amount that would make it worth it for your family.</p>
+          <div class="slider-wrap">
+            <div class="row">
+              <div class="col">
+                <div class="kicker">Your amount</div>
+                <div class="amount">$<span id="amt">0</span></div>
+                <div class="muted">Range: $0 to $<span id="maxLabel">50</span> (step <span id="stepLabel">1</span>)</div>
+              </div>
+              <div class="col">
+                <input type="range" id="sliderInput" min="0" max="50" step="1" value="0" aria-label="Gift card amount slider"/>
+              </div>
+            </div>
+          </div>
+          <p class="note">Tip: think about time, travel, parking, childcare, copays, or other things that matter to you.</p>
+        </section>
+
+        <section class="page" data-key="survey" tabindex="-1">
+          <h1>Now Answer These Questions</h1>
+          <h3 style="margin-top:8px">Which of the following were you thinking about when you made your bid? <span class="muted">(Select all that apply)</span></h3>
+          <div class="grid" id="costFactors"></div>
+
+          <div class="hr" style="height:1px;background:var(--line);margin:16px 0"></div>
+          <h3>Timing preference</h3>
+          <p class="muted">How much time should be allowed to vaccinate to earn the financial incentive?</p>
+          <div class="grid" id="timingOptions"></div>
+
+          <div class="hr" style="height:1px;background:var(--line);margin:16px 0"></div>
+          <h3>Format preference</h3>
+          <p class="muted">Assuming equal value, please rank the following forms of financial incentives from best to worst.</p>
+          <ul class="order" id="rankList"></ul>
+          <p class="muted">Use the ↑ / ↓ buttons to reorder.</p>
+        </section>
+
+        <section class="page" data-key="result" tabindex="-1">
+          <h1>Your Random Draw & Offer</h1>
+          <p>Your amount: <strong>$<span id="resYour">0</span></strong><br/>
+             Random draw (between $0 and $<span id="resMax">50</span>): <strong>$<span id="resDraw">0</span></strong></p>
+          <div id="offerCard" class="offer" role="status" aria-live="polite">
+            <h3 id="offerTitle">You are eligible for a gift card 🎉</h3>
+            <p id="offerText">Because the random draw is greater than or equal to your amount, you are offered <strong>$<span id="offerAmt">0</span></strong> if your child gets vaccinated within 90 days.</p>
+          </div>
+          <p class="footnote" style="margin-top:10px">This page shows the BDM outcome. Nothing is saved.</p>
+        </section>
+
+        <section class="page" data-key="done" tabindex="-1">
+          <h1>All Set</h1>
+          <p class="muted">Thanks for walking through the example. <strong>No data has been collected or sent.</strong></p>
+          <div class="btnbar">
+            <button class="btn" id="restartBtn" aria-label="Restart">Restart</button>
+          </div>
+        </section>
+        <!-- /PAGES -->
+
+        <div class="btnbar" aria-label="Navigation">
+          <button id="prevBtn" class="btn ghost">← Back</button>
+          <div style="flex:1"></div>
+          <button id="nextBtn" class="btn primary">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /************* CONFIG (tweak these) *************/
+    const CONFIG = {
+      maxIncentive: 50,  // highest possible gift card amount ($)
+      sliderStep: 1      // dollar increments
+    };
+
+    /************* STATE (ephemeral only) *************/
+    const state = {
+      pages: [],
+      pageIndex: 0,
+      sliderValue: 0,
+      draw: null,
+      qualifies: null,
+      ranking: [],
+    };
+
+    /************* HELPERS *************/
+    const $ = s => document.querySelector(s);
+    const $$ = s => [...document.querySelectorAll(s)];
+    const clamp = (n,min,max)=>Math.max(min,Math.min(max,n));
+
+    function updateProgress(){
+      const stepNow = state.pageIndex + 1;
+      const stepMax = state.pages.length;
+      $('#stepNow').textContent = stepNow;
+      $('#stepMax').textContent = stepMax;
+      const pct = (stepNow - 1) / (stepMax - 1) * 100;
+      $('#progressBar').style.width = `${pct}%`;
+    }
+
+    function focusActivePage(){
+      const active = state.pages[state.pageIndex];
+      if (active) active.focus({preventScroll:true});
+    }
+
+    function showPage(i){
+      state.pageIndex = clamp(i, 0, state.pages.length - 1);
+      state.pages.forEach((el, idx) => el.classList.toggle('active', idx === state.pageIndex));
+      updateProgress();
+      updateNavButtons();
+      focusActivePage();
+
+      const key = state.pages[state.pageIndex]?.dataset?.key;
+      if (key === 'result') renderResult();
+    }
+
+    function updateNavButtons(){
+      $('#prevBtn').disabled = state.pageIndex === 0;
+      $('#nextBtn').textContent = state.pageIndex === state.pages.length - 1 ? 'Finish' : 'Next →';
+    }
+
+    /************* BUILD UI *************/
+    function buildCostFactors(){
+      const opts = [
+        'Transportation costs (e.g., gasoline)',
+        'Parking fees',
+        'Time away from work',
+        'Childcare costs',
+        'Insurance copays',
+        'Physical discomfort',
+        'Psychological discomfort',
+        'Other',
+        'None of the above'
+      ];
+      const wrap = $('#costFactors');
+      wrap.innerHTML = '';
+      opts.forEach((label, idx) => {
+        const id = 'cf_' + idx;
+        const div = document.createElement('label');
+        div.className = 'check';
+        div.innerHTML = `<input type="checkbox" id="${id}" data-label="${label}"> <div>${label}</div>`;
+        wrap.appendChild(div);
+      });
+      const other = document.createElement('div');
+      other.style.marginTop = '8px';
+      other.innerHTML = `<input type="text" id="cf_other_text" placeholder="If you chose Other, please describe (optional)" />`;
+      wrap.appendChild(other);
+    }
+
+    function buildTimingOptions(){
+      const opts = ['1 week','1 month','3 months','6 months','12 months'];
+      const wrap = $('#timingOptions');
+      wrap.innerHTML = '';
+      opts.forEach((label, idx) => {
+        const id = 'tm_' + idx;
+        const div = document.createElement('label');
+        div.className = 'radio';
+        div.innerHTML = `<input type="radio" name="timing" id="${id}" value="${label}"> <div>${label}</div>`;
+        wrap.appendChild(div);
+      });
+    }
+
+    function buildRanking(){
+      const start = [
+        'Cash',
+        'Debit card',
+        'Gift card for gas',
+        'Gift card for taxi or ride share',
+        'Gift card for grocery',
+        'Parking validation'
+      ];
+      state.ranking = [...start];
+      const list = $('#rankList');
+      const render = () => {
+        list.innerHTML = '';
+        state.ranking.forEach((item, i) => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <span><strong>${i+1}.</strong> ${item}</span>
+            <span class="actions">
+              <button class="btn" data-act="up" aria-label="Move ${item} up">↑</button>
+              <button class="btn" data-act="down" aria-label="Move ${item} down">↓</button>
+            </span>`;
+          list.appendChild(li);
+        });
+      };
+      render();
+      list.addEventListener('click', (e) => {
+        const btn = e.target.closest('button[data-act]');
+        if (!btn) return;
+        const li = e.target.closest('li');
+        const idx = [...list.children].indexOf(li);
+        const act = btn.dataset.act;
+        if (act === 'up' && idx > 0) {
+          [state.ranking[idx-1], state.ranking[idx]] = [state.ranking[idx], state.ranking[idx-1]];
+          render();
+        }
+        if (act === 'down' && idx < state.ranking.length - 1) {
+          [state.ranking[idx+1], state.ranking[idx]] = [state.ranking[idx], state.ranking[idx+1]];
+          render();
+        }
+      });
+    }
+
+    /************* BDM *************/
+    function computeBDM(){
+      const min = 0;
+      const max = CONFIG.maxIncentive;
+      const steps = Math.floor((max - min) / CONFIG.sliderStep);
+      const rstep = Math.floor(Math.random() * (steps + 1));
+      const draw = min + rstep * CONFIG.sliderStep;
+      state.draw = draw;
+      state.qualifies = draw >= state.sliderValue;
+    }
+
+    function renderResult(){
+      $('#resYour').textContent = state.sliderValue;
+      $('#resMax').textContent = CONFIG.maxIncentive;
+      $('#resDraw').textContent = state.draw ?? 0;
+      $('#offerAmt').textContent = state.qualifies ? state.draw : 0;
+
+      const card = $('#offerCard');
+      const title = $('#offerTitle');
+      const txt = $('#offerText');
+
+      if (state.qualifies) {
+        card.classList.remove('no');
+        title.textContent = 'You are eligible for a gift card 🎉';
+        txt.innerHTML = `Because the random draw is greater than or equal to your amount, you are offered <strong>$<span id="offerAmt">${state.draw}</span></strong> if your child gets vaccinated within 90 days.`;
+      } else {
+        card.classList.add('no');
+        title.textContent = 'No gift card this time';
+        txt.textContent = 'Because the random draw is less than your amount, there is no gift card offer this time.';
+      }
+    }
+
+    /************* APP INIT *************/
+    function init(){
+      // Pages
+      state.pages = $$('.page');
+
+      // Seed UI
+      $('#maxLabel').textContent = CONFIG.maxIncentive;
+      $('#stepLabel').textContent = CONFIG.sliderStep;
+      $('#exMax').textContent = CONFIG.maxIncentive;
+      $('#exMax2').textContent = CONFIG.maxIncentive;
+      $('#exWould').textContent = Math.min(CONFIG.maxIncentive, 20);
+
+      const slider = $('#sliderInput');
+      slider.min = 0;
+      slider.max = CONFIG.maxIncentive;
+      slider.step = CONFIG.sliderStep;
+      slider.value = 0;
+      $('#amt').textContent = 0;
+
+      slider.addEventListener('input', (e) => {
+        const v = Number(e.target.value);
+        state.sliderValue = v;
+        $('#amt').textContent = v;
+      });
+
+      buildCostFactors();
+      buildTimingOptions();
+      buildRanking();
+
+      // Nav buttons
+      $('#prevBtn').addEventListener('click', () => showPage(state.pageIndex - 1));
+      $('#nextBtn').addEventListener('click', onNext);
+      $('#restartBtn').addEventListener('click', () => window.location.reload());
+
+      updateProgress();
+      updateNavButtons();
+      focusActivePage();
+
+      // Accessibility: left/right arrow adjusts slider when focused
+      slider.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          slider.value = Math.max(0, Number(slider.value) - Number(slider.step));
+          slider.dispatchEvent(new Event('input'));
+        }
+        if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          slider.value = Math.min(Number(slider.max), Number(slider.value) + Number(slider.step));
+          slider.dispatchEvent(new Event('input'));
+        }
+      });
+    }
+
+    function onNext(){
+      const lastIdx = state.pages.length - 1;
+      const key = state.pages[state.pageIndex]?.dataset?.key;
+
+      // compute BDM when moving forward from the slider page
+      if (key === 'slider') {
+        computeBDM();
+      }
+
+      if (state.pageIndex < lastIdx) {
+        showPage(state.pageIndex + 1);
+      } else {
+        // Finish
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Boot
+    init();
+  </script>
+</body>
+</html>
