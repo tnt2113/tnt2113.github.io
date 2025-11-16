@@ -64,6 +64,7 @@
     .offer.no{background:linear-gradient(180deg, rgba(255,122,122,.15), rgba(0,0,0,.1))}
     .footnote{font-size:.9rem;color:var(--muted)}
     .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+    .hidden{display:none !important}
   </style>
 </head>
 <body>
@@ -76,29 +77,32 @@
 
     <div class="card">
       <div class="panel">
-        <div class="kicker">Step <span id="stepNow">1</span> of <span id="stepMax">7</span></div>
+        <div class="kicker">Step <span id="stepNow">1</span> of <span id="stepMax">8</span></div>
         <div class="progress" aria-hidden="true"><div class="bar" id="progressBar"></div></div>
       </div>
       <div class="panel" id="pageContainer">
 
-        <!-- PAGES -->
-        <section class="page active" data-key="intro" tabindex="-1">
+        <!-- MAIN PAGES -->
+        <section class="page main" data-key="intro" tabindex="-1">
           <h1>Help Us Understand What Would Help You Vaccinate</h1>
           <p>We want to help more families get their kids the HPV vaccine. To do that, we’re offering gift cards to parents who schedule and complete their child’s HPV dose within 90 days.</p>
           <p>But here’s the thing: every family is different. Some may need more help than others. That’s why we want to know the smallest gift card amount that would make it worth it for you to get your child vaccinated.</p>
           <p>This is not a test. There are no right or wrong answers. We just want to understand what would help your family.</p>
         </section>
 
-        <section class="page" data-key="how" tabindex="-1">
+        <section class="page main" data-key="how" tabindex="-1">
           <h1>💡 How It Works</h1>
-          <p>We’ll ask you to move a slider to pick the smallest gift card amount that would make you say:</p>
+          <p id="howIntro">
+            <!-- Filled by JS based on slider vs text -->
+          </p>
           <p><em>“Yes, I’ll get my child vaccinated if I get at least this much.”</em></p>
           <p>After you choose your amount, the system will randomly pick a number between $0 and $50.</p>
           <p>If the random number is equal to or more than your number, you’ll be offered that amount as a gift card — if you get your child vaccinated in time.</p>
           <p>If the random number is less than your number, you won’t get a gift card.</p>
+          <p id="howExtraText" class="muted"></p>
         </section>
 
-        <section class="page" data-key="why" tabindex="-1">
+        <section class="page main" data-key="why" tabindex="-1">
           <h1>✅ Why It’s Best to Be Honest</h1>
           <p>This system is designed so that telling the truth is the best choice.</p>
           <ul>
@@ -106,30 +110,46 @@
             <li>If you ask for too little, you might get a gift card that doesn’t really help you.</li>
           </ul>
           <p>So it’s best to choose the real amount that would make it worth it for your family.</p>
-          <h3>📊 Example</h3>
-          <p>Let’s say the highest gift card possible is $<span class="mono" id="exMax">50</span>.</p>
-          <p>You say: <br/>“I would do it for $<span class="mono" id="exWould">20</span>.”</p>
-          <p>The system randomly picks a number between $0 and $<span class="mono" id="exMax2">50</span>. Let’s say it picks $<span class="mono">25</span>.</p>
-          <p>Because $25 is more than your $20, you get offered $25 if you get your child vaccinated in time.</p>
-          <p>But if the system had picked $15, you wouldn’t get a gift card — because $15 is less than your $20.</p>
+          <p class="muted">
+            Want more detail?
+            <a href="#" id="linkExample">See Example</a> ·
+            <a href="#" id="linkFaq">Frequently Asked Questions</a>
+          </p>
         </section>
 
-        <section class="page" data-key="faq" tabindex="-1">
-          <h1>❓ Common Questions & Tips</h1>
-          <ol class="faq">
-            <li><strong>What if I don’t want a gift card?</strong><br/>That’s totally okay! You can move the slider to $0 if you would get your child vaccinated without needing a gift card.</li>
-            <li><strong>What if I’m not sure how much I need?</strong><br/>Think about what would help cover your time, travel, or other costs. Pick the smallest amount that would make it easier for you to say yes.</li>
-            <li><strong>What if I pick a number and then change my mind?</strong><br/>You can take your time before submitting. Once you submit, your number is final — so make sure it feels right for you.</li>
-            <li><strong>What happens if I get offered a gift card?</strong><br/>You’ll get a message with the offer. If you get your child vaccinated within 90 days, you’ll receive the gift card digitally.</li>
-            <li><strong>What if I don’t get offered a gift card?</strong><br/>That just means the random number was lower than your amount. You can still get your child vaccinated — but there won’t be a gift card this time.</li>
-            <li><strong>Is this a trick to get me to take less money?</strong><br/>Nope! This method is designed to be fair. The best way to get the right offer is to be honest about what you need.</li>
-          </ol>
+        <!-- NEW: COMPREHENSION CHECK PAGE -->
+        <section class="page main" data-key="check" tabindex="-1">
+          <h1>✅ Quick Check</h1>
+          <p>Before you move on, please answer this question:</p>
+          <p><strong>What happens if the random number is less than the amount you typed?</strong></p>
+          <div class="grid">
+            <label class="radio">
+              <input type="radio" name="check" value="A">
+              <div>A) You still get the gift card</div>
+            </label>
+            <label class="radio">
+              <input type="radio" name="check" value="B">
+              <div>B) You do not get the gift card</div>
+            </label>
+          </div>
+          <div class="btnbar">
+            <button class="btn" id="checkAnswerBtn">Check my answer</button>
+          </div>
+          <p class="footnote" id="checkFeedback"></p>
         </section>
 
-        <section class="page" data-key="slider" tabindex="-1">
+        <!-- SLIDER / TEXT INPUT PAGE -->
+        <section class="page main" data-key="slider" tabindex="-1">
           <h1>Now Enter Your Amount</h1>
-          <p class="muted">Move the slider to choose the <strong>smallest</strong> gift card amount that would make it worth it for your family.</p>
-          <div class="slider-wrap">
+          <p class="muted" id="sliderIntroSlider">
+            Move the slider to choose the <strong>smallest</strong> gift card amount that would make it worth it for your family.
+          </p>
+          <p class="muted" id="sliderIntroText" style="display:none">
+            In the box, type the <strong>smallest</strong> gift card amount that would make it worth it for your family.
+          </p>
+
+          <!-- Slider mode -->
+          <div class="slider-wrap" id="sliderWrap">
             <div class="row">
               <div class="col">
                 <div class="kicker">Your amount</div>
@@ -141,10 +161,28 @@
               </div>
             </div>
           </div>
+
+          <!-- Text-box mode -->
+          <div class="slider-wrap" id="textWrap" style="display:none">
+            <div class="row">
+              <div class="col">
+                <div class="kicker">Your amount</div>
+                <div class="amount">$<span id="amtText">0</span></div>
+                <div class="muted">
+                  You can enter any amount from $0 up to $<span id="maxLabelText">50</span>.
+                  $<span id="maxLabelText2">50</span> is the most we can offer, but please enter the smallest amount that would make it worth it for you.
+                </div>
+              </div>
+              <div class="col">
+                <input type="number" id="amountInput" min="0" max="50" step="1" value="0" aria-label="Gift card amount input"/>
+              </div>
+            </div>
+          </div>
+
           <p class="note">Tip: Pick the smallest amount that would make it easier for you to vaccinate your child.</p>
         </section>
 
-        <section class="page" data-key="survey" tabindex="-1">
+        <section class="page main" data-key="survey" tabindex="-1">
           <h1>Now Answer These Questions</h1>
           <h3 style="margin-top:8px">Which of the following were you thinking about when you made your bid? <span class="muted">(Select all that apply)</span></h3>
           <div class="grid" id="costFactors"></div>
@@ -161,7 +199,7 @@
           <p class="muted">Use the ↑ / ↓ buttons to reorder.</p>
         </section>
 
-        <section class="page" data-key="result" tabindex="-1">
+        <section class="page main" data-key="result" tabindex="-1">
           <h1>Your Random Draw & Offer</h1>
           <p>Your amount: <strong>$<span id="resYour">0</span></strong><br/>
              Random draw (between $0 and $<span id="resMax">50</span>): <strong>$<span id="resDraw">0</span></strong></p>
@@ -172,13 +210,45 @@
           <p class="footnote" style="margin-top:10px">This page shows the BDM outcome. Nothing is saved.</p>
         </section>
 
-        <section class="page" data-key="done" tabindex="-1">
+        <section class="page main" data-key="done" tabindex="-1">
           <h1>All Set</h1>
           <p class="muted">Thanks for walking through the example. <strong>The HPV vaccine is cancer prevention. Click here to schedule your visit.</strong></p>
           <div class="btnbar">
             <button class="btn" id="restartBtn" aria-label="Restart">Restart</button>
           </div>
         </section>
+
+        <!-- EXTRA PAGES (OPTIONAL, REACHED VIA LINKS) -->
+
+        <!-- Example page -->
+        <section class="page extra" data-key="example" tabindex="-1">
+          <h1>📊 Example</h1>
+          <p>Let’s say the highest gift card possible is $<span class="mono" id="exMax">50</span>.</p>
+          <p>You say: <br/>“I would do it for $<span class="mono" id="exWould">20</span>.”</p>
+          <p>The system randomly picks a number between $0 and $<span class="mono" id="exMax2">50</span>. Let’s say it picks $<span class="mono">25</span>.</p>
+          <p>Because $25 is more than your $20, you get offered $25 if you get your child vaccinated in time.</p>
+          <p>But if the system had picked $15, you wouldn’t get a gift card — because $15 is less than your $20.</p>
+          <div class="btnbar">
+            <button class="btn ghost" id="backFromExample">Back</button>
+          </div>
+        </section>
+
+        <!-- FAQ page (reusing your original FAQ content) -->
+        <section class="page extra" data-key="faq" tabindex="-1">
+          <h1>❓ Frequently Asked Questions</h1>
+          <ol class="faq">
+            <li><strong>What if I don’t want a gift card?</strong><br/>That’s totally okay! You can move the slider to $0 if you would get your child vaccinated without needing a gift card.</li>
+            <li><strong>What if I’m not sure how much I need?</strong><br/>Think about what would help cover your time, travel, or other costs. Pick the smallest amount that would make it easier for you to say yes.</li>
+            <li><strong>What if I pick a number and then change my mind?</strong><br/>You can take your time before submitting. Once you submit, your number is final — so make sure it feels right for you.</li>
+            <li><strong>What happens if I get offered a gift card?</strong><br/>You’ll get a message with the offer. If you get your child vaccinated within 90 days, you’ll receive the gift card digitally.</li>
+            <li><strong>What if I don’t get offered a gift card?</strong><br/>That just means the random number was lower than your amount. You can still get your child vaccinated — but there won’t be a gift card this time.</li>
+            <li><strong>Is this a trick to get me to take less money?</strong><br/>Nope! This method is designed to be fair. The best way to get the right offer is to be honest about what you need.</li>
+          </ol>
+          <div class="btnbar">
+            <button class="btn ghost" id="backFromFaq">Back</button>
+          </div>
+        </section>
+
         <!-- /PAGES -->
 
         <div class="btnbar" aria-label="Navigation">
@@ -205,6 +275,7 @@
       draw: null,
       qualifies: null,
       ranking: [],
+      inputMode: null // 'slider' or 'text'
     };
 
     /************* HELPERS *************/
@@ -226,15 +297,37 @@
       if (active) active.focus({preventScroll:true});
     }
 
+    function restoreMainNav(){
+      const nav = document.querySelector('[aria-label="Navigation"]');
+      if (nav) nav.classList.remove('hidden');
+    }
+
     function showPage(i){
       state.pageIndex = clamp(i, 0, state.pages.length - 1);
+      // hide extra pages
+      $$('.page.extra').forEach(el => el.classList.remove('active'));
+      // show main page
       state.pages.forEach((el, idx) => el.classList.toggle('active', idx === state.pageIndex));
+      restoreMainNav();
       updateProgress();
       updateNavButtons();
       focusActivePage();
 
       const key = state.pages[state.pageIndex]?.dataset?.key;
       if (key === 'result') renderResult();
+    }
+
+    function showExtraPage(key){
+      // Hide all main pages
+      state.pages.forEach(el => el.classList.remove('active'));
+      // Hide all extras
+      $$('.page.extra').forEach(el => el.classList.remove('active'));
+      const extra = document.querySelector(`.page.extra[data-key="${key}"]`);
+      if (extra) {
+        extra.classList.add('active');
+        const nav = document.querySelector('[aria-label="Navigation"]');
+        if (nav) nav.classList.add('hidden');
+      }
     }
 
     function updateNavButtons(){
@@ -357,18 +450,46 @@
       }
     }
 
+    /************* INPUT MODE (SLIDER vs TEXT) *************/
+    function applyInputMode(){
+      const isSlider = state.inputMode === 'slider';
+
+      // How It Works text
+      const howIntro = $('#howIntro');
+      const howExtra = $('#howExtraText');
+      if (isSlider) {
+        howIntro.textContent = 'We’ll ask you to move a slider to pick the smallest gift card amount that would make you say:';
+        howExtra.textContent = '';
+      } else {
+        howIntro.textContent = 'In the box, type the smallest gift card amount that would make you say:';
+        howExtra.textContent = 'You can enter any amount from $0 up to $50. $50 is the most we can offer, but please enter the smallest amount that would make it worth it for you.';
+      }
+
+      // Slider page text & UI
+      $('#sliderIntroSlider').style.display = isSlider ? '' : 'none';
+      $('#sliderIntroText').style.display = isSlider ? 'none' : '';
+      $('#sliderWrap').style.display = isSlider ? '' : 'none';
+      $('#textWrap').style.display = isSlider ? 'none' : '';
+    }
+
     /************* APP INIT *************/
     function init(){
-      // Pages
-      state.pages = $$('.page');
+      // Main pages only
+      state.pages = $$('.page.main');
 
-      // Seed UI
+      // Randomly assign input mode: 50% slider, 50% text box
+      state.inputMode = Math.random() < 0.5 ? 'slider' : 'text';
+
+      // Seed UI text based on CONFIG
       $('#maxLabel').textContent = CONFIG.maxIncentive;
       $('#stepLabel').textContent = CONFIG.sliderStep;
+      $('#maxLabelText').textContent = CONFIG.maxIncentive;
+      $('#maxLabelText2').textContent = CONFIG.maxIncentive;
       $('#exMax').textContent = CONFIG.maxIncentive;
       $('#exMax2').textContent = CONFIG.maxIncentive;
       $('#exWould').textContent = Math.min(CONFIG.maxIncentive, 20);
 
+      // Slider setup
       const slider = $('#sliderInput');
       slider.min = 0;
       slider.max = CONFIG.maxIncentive;
@@ -382,6 +503,22 @@
         $('#amt').textContent = v;
       });
 
+      // Text input setup
+      const amountInput = $('#amountInput');
+      amountInput.min = 0;
+      amountInput.max = CONFIG.maxIncentive;
+      amountInput.step = CONFIG.sliderStep;
+      amountInput.value = 0;
+      $('#amtText').textContent = 0;
+
+      amountInput.addEventListener('input', (e) => {
+        let v = Number(e.target.value);
+        if (isNaN(v)) v = 0;
+        v = Math.max(0, Math.min(CONFIG.maxIncentive, v));
+        state.sliderValue = v;
+        $('#amtText').textContent = v;
+      });
+
       buildCostFactors();
       buildTimingOptions();
       buildRanking();
@@ -391,11 +528,49 @@
       $('#nextBtn').addEventListener('click', onNext);
       $('#restartBtn').addEventListener('click', () => window.location.reload());
 
-      updateProgress();
-      updateNavButtons();
-      focusActivePage();
+      // Example & FAQ links
+      const linkExample = $('#linkExample');
+      if (linkExample) {
+        linkExample.addEventListener('click', (e) => {
+          e.preventDefault();
+          showExtraPage('example');
+        });
+      }
+      const linkFaq = $('#linkFaq');
+      if (linkFaq) {
+        linkFaq.addEventListener('click', (e) => {
+          e.preventDefault();
+          showExtraPage('faq');
+        });
+      }
+      $('#backFromExample')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(state.pageIndex);
+      });
+      $('#backFromFaq')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(state.pageIndex);
+      });
 
-      // Accessibility: left/right arrow adjusts slider when focused
+      // Comprehension check
+      const checkBtn = $('#checkAnswerBtn');
+      if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+          const selected = document.querySelector('input[name="check"]:checked');
+          const fb = $('#checkFeedback');
+          if (!selected) {
+            fb.textContent = 'Please select an answer first.';
+            return;
+          }
+          if (selected.value === 'B') {
+            fb.textContent = 'Correct! If the random number is less than the amount you typed, you do not get the gift card. (Correct answer: B)';
+          } else {
+            fb.textContent = 'Not quite. If the random number is less than the amount you typed, you do not get the gift card. (Correct answer: B)';
+          }
+        });
+      }
+
+      // Accessibility: left/right arrow adjusts slider when slider is used
       slider.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
           e.preventDefault();
@@ -408,13 +583,20 @@
           slider.dispatchEvent(new Event('input'));
         }
       });
+
+      // Apply slider vs text mode
+      applyInputMode();
+
+      updateProgress();
+      updateNavButtons();
+      focusActivePage();
     }
 
     function onNext(){
       const lastIdx = state.pages.length - 1;
       const key = state.pages[state.pageIndex]?.dataset?.key;
 
-      // compute BDM when moving forward from the slider page
+      // compute BDM when moving forward from the slider/text page
       if (key === 'slider') {
         computeBDM();
       }
